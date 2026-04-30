@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme',
+        s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoadCams — Campus AI Surveillance | Bharani KR</title>
+  <meta name="description" content="Deep-dive into RoadCams: Custom YOLOv11 ANPR model for campus vehicle surveillance with LCS geospatial mapping and 95%+ detection accuracy.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <meta property="og:title" content="RoadCams — AI Surveillance System">
+  <meta property="og:description" content="Custom YOLOv11 ANPR model with 95%+ accuracy. Campus-wide geospatial vehicle tracking.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="page-loader" id="page-loader">
+    <div class="loader-logo">B<span>K</span></div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <div id="scroll-progress"></div>
+  <div class="grid-blueprint"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">Identity</a>
+      <a href="../projects.html">Engineering</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">Identity</a>
+    <a href="../projects.html">Engineering</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+
+  <!-- ═══════════════ PROJECT HERO ═══════════════ -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex; align-items:center; gap:0.4rem; margin-bottom:1.5rem;">
+      <i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects
+    </a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1">
+      <span class="tier-badge">FLAGSHIP</span>
+      <span class="tag">01 / 10</span>
+    </div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2"
+        style="font-size: clamp(2.5rem, 7vw, 4.5rem);">
+      RoadCams
+    </h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">
+      Campus-wide AI surveillance system with custom YOLOv11 ANPR model, PaddleOCR text extraction, regex-based plate validation, and geospatial trajectory mining via LCS + QGIS.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">YOLOv11</span><span class="tag">PaddleOCR</span><span class="tag">Flask</span>
+      <span class="tag">PostgreSQL</span><span class="tag">QGIS</span><span class="tag">Leaflet.js</span>
+      <span class="tag">Python</span><span class="tag">OpenCV</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5">
+      <a href="https://github.com/bharani-01" target="_blank" class="btn-primary">
+        View Source <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-4 fade-up d5" style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--text-subtle);">
+      <span><i class="fas fa-users" style="margin-right:4px;"></i> Team of 2</span>
+      <span><i class="fas fa-calendar" style="margin-right:4px;"></i> 2–3 months</span>
+      <span><i class="fas fa-building" style="margin-right:4px;"></i> 1st Year Internship</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ METRICS ═══════════════ -->
+  <section class="compact" style="background: var(--surface); border-bottom: 1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up">
+        <div class="detail-metric-number">95%+</div>
+        <div class="detail-metric-label">Detection Accuracy</div>
+      </div>
+      <div class="detail-metric fade-up d1">
+        <div class="detail-metric-number">20–30</div>
+        <div class="detail-metric-label">Models Trained</div>
+      </div>
+      <div class="detail-metric fade-up d2">
+        <div class="detail-metric-number">3–8</div>
+        <div class="detail-metric-label">Simultaneous Cameras</div>
+      </div>
+      <div class="detail-metric fade-up d3">
+        <div class="detail-metric-number">Real-time</div>
+        <div class="detail-metric-label">Processing Speed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROBLEM STATEMENT ═══════════════ -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Problem Statement</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+          The Challenge
+        </h2>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">
+          University campuses process hundreds of vehicle entries daily with zero automated oversight. Security guards manually log license plates onto paper registers — a process prone to human error, impossible to audit, and blind to spatial patterns.
+        </p>
+        <p class="c-muted leading-relaxed mb-4">
+          Key problems identified:
+        </p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">No detection automation</strong> — guards miss plates during rush hours, at night, or in poor weather</li>
+          <li><strong class="c-text">No spatial coverage analysis</strong> — no way to determine if camera placement is optimal or what areas are blind spots</li>
+          <li><strong class="c-text">No audit trail</strong> — paper logs can be lost, tampered with, or simply illegible</li>
+          <li><strong class="c-text">No blacklist enforcement</strong> — unauthorized vehicles can enter and exit without triggering any alert</li>
+          <li><strong class="c-text">No trajectory insight</strong> — campus admin has zero visibility into vehicle movement patterns or most-used routes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MY APPROACH ═══════════════ -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// My Approach</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+        Engineering Thinking
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">
+          This was my <strong class="c-text">first-ever project</strong> using YOLO, OCR, and PostgreSQL — built during my 1st year inter-college internship. The core insight was to treat this as a <strong class="c-text">pipeline problem</strong>: each stage feeds the next, and each stage must independently validate its output before passing it forward.
+        </p>
+        <p class="c-muted leading-relaxed mb-4">
+          The pipeline: <strong class="c-text">Live feed → YOLO plate detection → PaddleOCR text extraction → Regex validation → Character correction → Duplicate check → PostgreSQL logging → QGIS trajectory analysis.</strong>
+        </p>
+        <p class="c-muted leading-relaxed">
+          Every detected plate passes through regex validation against Indian number plate formats. If a match fails, the system attempts character substitution from a confusion map (<code style="color:var(--primary); font-size:12px;">0→O, 8→B, 1→l, ...</code>) and retries. Only finalized plates get logged with a vehicle snapshot captured as identity proof.
+        </p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen">
+          <div class="approach-tag chosen">CHOSEN</div>
+          <p class="c-text text-sm font-semibold mb-1">Custom YOLO + PaddleOCR pipeline</p>
+          <p class="c-muted text-sm leading-relaxed">Full control over training data, model parameters, and OCR post-processing. Allows offline operation with no API costs.</p>
+        </div>
+        <div class="approach-rejected">
+          <div class="approach-tag rejected">REJECTED</div>
+          <p class="c-text text-sm font-semibold mb-1">Cloud ANPR APIs (Google Vision, Plate Recognizer)</p>
+          <p class="c-muted text-sm leading-relaxed">Per-request pricing is impractical for 3–8 cameras running 24/7. No control over accuracy on regional Indian plates.</p>
+        </div>
+        <div class="approach-rejected">
+          <div class="approach-tag rejected">REJECTED</div>
+          <p class="c-text text-sm font-semibold mb-1">Tesseract OCR</p>
+          <p class="c-muted text-sm leading-relaxed">Tested extensively but accuracy on distorted, angled plate text was poor. PaddleOCR outperformed it significantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ARCHITECTURE ═══════════════ -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// System Architecture</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+        Pipeline Design
+      </h2>
+    </div>
+    <div class="arch-block fade-up d1">
+┌───────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ Live Feed │───▶│ YOLOv11 ANPR │───▶│  PaddleOCR   │───▶│   Regex +    │
+│ (3-8 Cams)│    │  Detection   │    │  Text Read   │    │  Char Fix    │
+└───────────┘    └──────────────┘    └──────────────┘    └──────┬───────┘
+                                                                │
+                        ┌───────────────────────────────────────┘
+                        │
+                        ▼
+              ┌──────────────────┐    ┌──────────────┐    ┌──────────────┐
+              │ Duplicate Check  │───▶│  PostgreSQL   │───▶│   QGIS +     │
+              │ (5min window)    │    │  Audit Log    │    │  Leaflet.js  │
+              └──────────────────┘    │  + Blacklist  │    │  Trajectory  │
+                       │              └──────────────┘    └──────────────┘
+                       ▼
+              ┌──────────────────┐
+              │ Vehicle Snapshot │
+              │ Capture + Store  │
+              └──────────────────┘</div>
+  </section>
+
+  <!-- ═══════════════ TECH STACK RATIONALE ═══════════════ -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Tech Stack</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+        Why These Technologies
+      </h2>
+    </div>
+    <div class="tech-reason-grid fade-up d1">
+      <div class="tech-reason-item">
+        <div class="tech-reason-icon"><i class="fas fa-eye"></i></div>
+        <div>
+          <div class="tech-reason-name">YOLOv11</div>
+          <div class="tech-reason-why">Single-stage detection fast enough for real-time multi-camera feeds. Trained on custom Roboflow dataset of Indian plates.</div>
+        </div>
+      </div>
+      <div class="tech-reason-item">
+        <div class="tech-reason-icon"><i class="fas fa-font"></i></div>
+        <div>
+          <div class="tech-reason-name">PaddleOCR</div>
+          <div class="tech-reason-why">Beat Tesseract OCR on angled, dirty, and low-res plate text. Better out-of-box accuracy on non-Latin-heavy fonts.</div>
+        </div>
+      </div>
+      <div class="tech-reason-item">
+        <div class="tech-reason-icon"><i class="fas fa-database"></i></div>
+        <div>
+          <div class="tech-reason-name">PostgreSQL</div>
+          <div class="tech-reason-why">Structured audit logging — every entry queryable by plate, camera, timestamp, and coordinate. First time using a relational DB.</div>
+        </div>
+      </div>
+      <div class="tech-reason-item">
+        <div class="tech-reason-icon"><i class="fas fa-globe"></i></div>
+        <div>
+          <div class="tech-reason-name">QGIS</div>
+          <div class="tech-reason-why">Geospatial trajectory mining — visualize vehicle paths across campus. Professional GIS tool for coordinate-based analysis.</div>
+        </div>
+      </div>
+      <div class="tech-reason-item">
+        <div class="tech-reason-icon"><i class="fas fa-map-marked-alt"></i></div>
+        <div>
+          <div class="tech-reason-name">Leaflet.js</div>
+          <div class="tech-reason-why">Interactive web map for vehicle movement visualization and LCS most-used-path overlay. Lightweight alternative to Google Maps.</div>
+        </div>
+      </div>
+      <div class="tech-reason-item">
+        <div class="tech-reason-icon"><i class="fas fa-code"></i></div>
+        <div>
+          <div class="tech-reason-name">Python + Flask</div>
+          <div class="tech-reason-why">Rapid prototyping for a 2-3 month internship timeline. Flask serves the dashboard; Python binds YOLO, OCR, and DB layers.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ENGINEERING DEEP-DIVE ═══════════════ -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Technical Deep-Dive</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+        Key Engineering Decisions
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Custom YOLOv11 ANPR Model</p>
+        <p class="c-muted text-sm leading-relaxed mb-3">
+          Trained on a curated Roboflow dataset of Indian license plates with augmentation for varied lighting, angles, and occlusion conditions.
+        </p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>20–30 model iterations before achieving consistent accuracy</li>
+          <li>Custom anchor tuning for rectangular plate aspect ratios</li>
+          <li>Confidence thresholding with NMS deduplication</li>
+          <li>Multi-camera feed processing with frame-skip optimization</li>
+        </ul>
+      </div>
+
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">OCR + Regex Validation Pipeline</p>
+        <p class="c-muted text-sm leading-relaxed mb-3">
+          PaddleOCR extracts text, then regex validates against Indian plate format. A character confusion map handles common OCR misreads.
+        </p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>PaddleOCR selected after testing Tesseract and TrOCR</li>
+          <li>Confusion map: <code style="font-size:11px;">0↔O, 8↔B, 1↔l, 5↔S</code></li>
+          <li>Auto-retry with character substitution on match failure</li>
+          <li>Vehicle snapshot captured on finalized plate recognition</li>
+        </ul>
+      </div>
+
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Duplicate Detection + Blacklist</p>
+        <p class="c-muted text-sm leading-relaxed mb-3">
+          Same vehicle detected by the same camera within a 5-minute window is flagged as duplicate. Blacklisted plates trigger immediate alerts.
+        </p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>5-minute dedup window prevents redundant log entries</li>
+          <li>Blacklist lookup on every finalized plate read</li>
+          <li>Alert system for unauthorized vehicle detection</li>
+          <li>Cross-camera tracking identifies entry → exit patterns</li>
+        </ul>
+      </div>
+
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">LCS Trajectory Mining</p>
+        <p class="c-muted text-sm leading-relaxed mb-3">
+          Longest Common Subsequence algorithm applied to camera-ordered vehicle sightings to find the most-used paths on campus.
+        </p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Camera coordinates logged with every entry — GPS lat/lng</li>
+          <li>LCS finds common movement sequences across vehicles</li>
+          <li>QGIS renders trajectory heatmaps on campus map</li>
+          <li>Leaflet.js displays path overlay in browser dashboard</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ CHALLENGES & FAILURES ═══════════════ -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Challenges & Failures</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+        What Broke & What I Learned
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div>
+        <div class="challenge-title">20–30 YOLO Models Before Getting It Right</div>
+        <div class="challenge-body">
+          This was my first time training a YOLO model. We exhausted ourselves iterating on dataset quality, augmentation parameters, and hyperparameters. <strong>The custom dataset didn't produce correct results for weeks.</strong> We tried different YOLO versions, adjusted anchor boxes, modified learning rates — nothing worked consistently until we refined the training data with stricter annotation standards and proper augmentation diversity.
+        </div>
+        <div class="challenge-lesson">
+          <i class="fas fa-graduation-cap"></i> Lesson: Model accuracy is 80% data quality, 20% architecture. Clean annotations matter more than hyperparameter tuning.
+        </div>
+      </div>
+
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div>
+        <div class="challenge-title">OCR Character Confusion — 0 vs O, 8 vs B</div>
+        <div class="challenge-body">
+          PaddleOCR would consistently misread <strong>0 as O, 8 as B, 1 as l, and 5 as S</strong>. This caused valid plates to fail regex validation. We built a character confusion map and an auto-retry system: if the initial regex match fails, the system substitutes commonly confused characters and re-checks. This recovered ~15% of plates that would have been lost.
+        </div>
+        <div class="challenge-lesson">
+          <i class="fas fa-graduation-cap"></i> Lesson: OCR is never 100% accurate — always build a fallback correction layer. Post-processing is as important as the model itself.
+        </div>
+      </div>
+
+      <div class="challenge-card fade-up d2">
+        <div class="challenge-num">Challenge 03</div>
+        <div class="challenge-title">Choosing the Right OCR Engine</div>
+        <div class="challenge-body">
+          We tested <strong>Tesseract OCR, TrOCR, and PaddleOCR</strong> extensively. Tesseract performed poorly on angled, dirty, or partially occluded plates. TrOCR had better accuracy but was too slow for real-time feeds. PaddleOCR struck the right balance between speed and accuracy, especially on non-standard Indian plate fonts.
+        </div>
+        <div class="challenge-lesson">
+          <i class="fas fa-graduation-cap"></i> Lesson: The "best" tool depends on your constraints. In real-time systems, speed matters as much as accuracy — benchmark before committing.
+        </div>
+      </div>
+
+      <div class="challenge-card fade-up d3">
+        <div class="challenge-num">Challenge 04</div>
+        <div class="challenge-title">Duplicate Entry Edge Cases</div>
+        <div class="challenge-body">
+          The 5-minute dedup window seemed simple, but edge cases surfaced: <strong>vehicles parked near a camera kept triggering re-detections.</strong> We had to distinguish between a vehicle "passing through" vs "parked in view." The fix was combining plate ID + camera ID + time window to define uniqueness, preventing stationary vehicles from flooding the log.
+        </div>
+        <div class="challenge-lesson">
+          <i class="fas fa-graduation-cap"></i> Lesson: Simple rules break on real-world edge cases. Always test with actual deployment conditions, not just clean lab data.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ RESULTS & IMPACT ═══════════════ -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Results & Impact</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+        What It Achieved
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">95%+ Detection Accuracy</div>
+        <div class="result-desc">After training 20–30 models, the final YOLOv11 model achieved consistent 95%+ accuracy on Indian license plates across varying lighting and angles.</div>
+      </div>
+      <div class="result-card fade-up d1">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">3–8 Camera Simultaneous Processing</div>
+        <div class="result-desc">System tested with up to 8 concurrent camera feeds processing plate detection, OCR, and logging in real-time without dropping frames.</div>
+      </div>
+      <div class="result-card fade-up d2">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">Campus Trajectory Mapping</div>
+        <div class="result-desc">LCS algorithm successfully identified the most-used vehicle paths across campus, displayed as interactive heatmaps on Leaflet.js and QGIS.</div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-6">
+      <div class="result-card fade-up d3">
+        <div class="result-label">Impact</div>
+        <div class="result-title">Complete Digital Audit Trail</div>
+        <div class="result-desc">Every vehicle entry logged with: plate number, timestamp, camera name, GPS coordinates, and snapshot image — replacing unreliable paper registers entirely.</div>
+      </div>
+      <div class="result-card fade-up d4">
+        <div class="result-label">Personal Growth</div>
+        <div class="result-title">First Real Engineering Project</div>
+        <div class="result-desc">First exposure to YOLO, OCR, PostgreSQL, and GIS tooling. Learned the hard way that production systems require far more than "it works in a notebook."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DEMO & EVIDENCE ═══════════════ -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Demo & Evidence</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+        Screenshots & Demo
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/roadcams/anpr-dashboard.png" alt="RoadCams ANPR Dashboard — real-time detection feed with log sidebar" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">
+          Dashboard Overview — Live Detection Feed
+        </div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d1" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/roadcams/multicam-monitor.png" alt="Multi-camera surveillance grid showing 6 campus feeds" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">
+          Multi-Camera Monitor — 3–8 Simultaneous Feeds
+        </div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d2" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/roadcams/anpr-detection.png" alt="ANPR detection close-up with bounding box and OCR result" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">
+          ANPR Detection — YOLOv11 + PaddleOCR Output
+        </div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d3" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/roadcams/campus-trajectory.png" alt="Campus trajectory heatmap showing most-used vehicle paths" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">
+          Campus Trajectory Map — LCS Path Analysis
+        </div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECT NAV ═══════════════ -->
+  <div class="project-nav-row">
+    <div></div>
+    <a href="titan.html" class="project-nav-link" style="text-align:right;">
+      Next Project <i class="fas fa-arrow-right" style="font-size:8px;"></i><br>
+      <span class="project-nav-title">TITAN-V2 Rover</span>
+    </a>
+  </div>
+
+  <script src="../assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hand Sign to Audio — ISL Translator | Bharani KR</title>
+  <meta name="description" content="Real-time hand sign language to audio translator using MediaPipe, dual TTS pipeline, and plug-and-play community gesture database.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-loader" id="page-loader"><div class="loader-logo">B<span>K</span></div><div class="loader-bar"></div></div>
+  <div id="scroll-progress"></div>
+  <div class="grid-blueprint"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a><a href="../about.html">Identity</a>
+      <a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="../index.html">Home</a><a href="../about.html">Identity</a>
+    <a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.5rem;">
+      <i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects
+    </a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1">
+      <span class="tier-badge">MAJOR</span>
+      <span class="tag">04 / 10</span>
+    </div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2" style="font-size: clamp(2.5rem, 7vw, 4.5rem);">
+      Hand Sign to Audio
+    </h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">
+      Real-time sign language to speech translator with plug-and-play gesture database. MediaPipe landmark detection, dual online/offline TTS, and virtual audio routing for video calls.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">MediaPipe</span><span class="tag">Python</span><span class="tag">gTTS</span>
+      <span class="tag">pyttsx3</span><span class="tag">SQLite</span><span class="tag">Tkinter</span>
+      <span class="tag">VB-Cable</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5">
+      <a href="https://github.com/bharani-01" target="_blank" class="btn-primary">View Source <i class="fab fa-github"></i></a>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background:var(--surface);border-bottom:1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up"><div class="detail-metric-number">150+</div><div class="detail-metric-label">Signs Tested</div></div>
+      <div class="detail-metric fade-up d1"><div class="detail-metric-number">Dual</div><div class="detail-metric-label">TTS Pipeline</div></div>
+      <div class="detail-metric fade-up d2"><div class="detail-metric-number">21</div><div class="detail-metric-label">Hand Landmarks</div></div>
+      <div class="detail-metric fade-up d3"><div class="detail-metric-number">Plug</div><div class="detail-metric-label">& Play Gestures</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Problem Statement</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">The Challenge</h2>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Over 70 million deaf individuals worldwide rely on interpreters for daily communication. Existing solutions are either expensive, cloud-dependent, or limited to ASL. This project targets a <strong class="c-text">universal, plug-and-play approach</strong> — any sign language can be added by anyone.</p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">Language-agnostic</strong> — hand signs differ across ISL, ASL, BSL. Need a system where anyone can create their own sign database</li>
+          <li><strong class="c-text">Offline capability</strong> — must work without internet using local TTS engine</li>
+          <li><strong class="c-text">Desktop distribution</strong> — needs to be packaged as a .exe for non-technical users</li>
+          <li><strong class="c-text">Video call integration</strong> — output speech to virtual microphone for Zoom, Teams, Meet</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// My Approach</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Engineering Thinking</h2>
+    </div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">
+          The core insight was that <strong class="c-text">hand signs vary across languages</strong> — ISL, ASL, BSL all have different gesture patterns. Training a YOLO model would require massive per-language datasets, making it impractical.
+        </p>
+        <p class="c-muted leading-relaxed mb-4">
+          MediaPipe solved this elegantly: it extracts <strong class="c-text">21 hand landmark coordinates</strong> without any pre-trained gesture data. The system becomes <strong class="c-text">plug-and-play</strong> — users can record new gestures in minutes, save them to SQLite, and share the database files. A community could build an entire language in days.
+        </p>
+        <p class="c-muted leading-relaxed">
+          We chose <strong class="c-text">Tkinter for the UI</strong> because the goal was to distribute it as a standalone .exe file — making it accessible to non-technical deaf users without requiring Python installation.
+        </p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen">
+          <div class="approach-tag chosen">CHOSEN</div>
+          <p class="c-text text-sm font-semibold mb-1">MediaPipe + SQLite gesture DB</p>
+          <p class="c-muted text-sm leading-relaxed">No training needed. 21-point landmarks as features. Anyone can create/share gesture sets. True plug-and-play.</p>
+        </div>
+        <div class="approach-rejected">
+          <div class="approach-tag rejected">REJECTED</div>
+          <p class="c-text text-sm font-semibold mb-1">YOLO-based hand sign detection</p>
+          <p class="c-muted text-sm leading-relaxed">Requires massive per-language training datasets. Different sign languages = different models. Not scalable for community use.</p>
+        </div>
+        <div class="approach-rejected">
+          <div class="approach-tag rejected">REJECTED</div>
+          <p class="c-text text-sm font-semibold mb-1">Web-based UI (Flask/React)</p>
+          <p class="c-muted text-sm leading-relaxed">Requires server hosting. Goal was offline-first desktop app distributable as .exe for non-technical users.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// System Architecture</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Pipeline Design</h2></div>
+    <div class="arch-block fade-up d1">
+┌──────────┐    ┌────────────────┐    ┌──────────────┐    ┌──────────────┐
+│  Webcam  │───▶│   MediaPipe    │───▶│  Gesture DB  │───▶│  TTS Engine  │
+│  Input   │    │  21-Point Hand │    │   (SQLite)   │    │  gTTS/pyttsx │
+└──────────┘    │  Landmark      │    │              │    └──────┬───────┘
+                └────────────────┘    │  Plug & Play │           │
+                                      │  Community   │    ┌──────┴───────┐
+                                      │  Gesture DB  │    │  Speaker /   │
+                                      └──────────────┘    │  VB-Cable    │
+                                                          │ (Virtual Mic)│
+                                                          └──────────────┘
+                                                                │
+                                                          ┌─────┴────────┐
+                                                          │ Zoom / Teams │
+                                                          │ / Google Meet│
+                                                          └──────────────┘</div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Tech Stack</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Why These Technologies</h2></div>
+    <div class="tech-reason-grid fade-up d1">
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-hand-paper"></i></div><div><div class="tech-reason-name">MediaPipe</div><div class="tech-reason-why">21-point hand landmarks with zero training data needed. Works offline. Real-time detection at 30+ FPS.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-database"></i></div><div><div class="tech-reason-name">SQLite</div><div class="tech-reason-why">Portable gesture database. Share .db files to distribute sign language packs. No server needed.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-volume-up"></i></div><div><div class="tech-reason-name">gTTS + pyttsx3</div><div class="tech-reason-why">Dual TTS: gTTS for high-quality online audio, pyttsx3 as offline fallback. Automatic failover.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-desktop"></i></div><div><div class="tech-reason-name">Tkinter</div><div class="tech-reason-why">Native desktop UI. Packageable as standalone .exe for non-technical users. No Python install required.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-microphone"></i></div><div><div class="tech-reason-name">VB-Cable</div><div class="tech-reason-why">Virtual audio device routing TTS output to mic input. Enables sign-to-speech in video calls.</div></div></div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVE -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Technical Deep-Dive</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Key Systems</h2></div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">MediaPipe Landmark Detection</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>21-point hand landmark extraction per frame</li>
+          <li>Finger state detection (extended/curled per digit)</li>
+          <li>Debounced gesture matching to prevent false triggers</li>
+          <li>Configurable confidence threshold</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Plug & Play Gesture Database</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>100–150 signs created and tested</li>
+          <li>User-trainable: capture gesture → assign phrase → save</li>
+          <li>Shareable .db files — community can build any language</li>
+          <li>Import/export for gesture library distribution</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Dual TTS Pipeline</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>gTTS (Google) for online high-quality audio</li>
+          <li>pyttsx3 local engine as offline fallback</li>
+          <li>Automatic failover: online → offline on network failure</li>
+          <li>Configurable voice speed, pitch, and language</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Virtual Audio Routing</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>VB-Cable routes TTS output to virtual mic input</li>
+          <li>Enables sign-to-speech in Zoom, Teams, Meet</li>
+          <li>Screen crop approach for meeting video input</li>
+          <li>Latency optimization for real-time conversation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Challenges & Failures</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What Broke & What I Learned</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div>
+        <div class="challenge-title">YOLO Approach Failed — Dataset Nightmare</div>
+        <div class="challenge-body">
+          Initially tried building with YOLO, but <strong>hand signs have completely different patterns across languages</strong> (ISL vs ASL vs BSL). Creating training datasets for each language was impractical. We spent weeks searching for alternatives before discovering MediaPipe's landmark-based approach which needs zero training data.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Sometimes the best model is no model. Feature extraction (landmarks) can outperform trained classifiers when the problem space is too diverse.</div>
+      </div>
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div>
+        <div class="challenge-title">Video Call Integration — Latency Killed It</div>
+        <div class="challenge-body">
+          For video call integration, we tried <strong>screen-sharing the entire screen and cropping the video call area</strong> to feed into MediaPipe. The approach worked, but the <strong>latency was too high</strong> — screen capture + crop + detection + TTS created a noticeable delay that broke natural conversation flow.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Real-time pipelines need every stage optimized. A multi-step screen capture approach adds unacceptable latency for conversational use.</div>
+      </div>
+      <div class="challenge-card fade-up d2">
+        <div class="challenge-num">Challenge 03</div>
+        <div class="challenge-title">Similar Gestures Causing False Matches</div>
+        <div class="challenge-body">
+          With 100+ signs, some gestures had <strong>very similar finger positions</strong>. The system would oscillate between two similar signs rapidly, causing audio stuttering. Fixed with debounced matching — a gesture must be held stable for a threshold duration before triggering audio output.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: More gestures = more collisions. Debouncing and confidence thresholds are essential in classification systems with large category counts.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Results & Impact</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What It Achieved</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">150+ Signs Tested</div>
+        <div class="result-desc">Created and validated 100–150 sign gestures, proving the plug-and-play community model works at scale.</div>
+      </div>
+      <div class="result-card fade-up d1">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">Language-Agnostic System</div>
+        <div class="result-desc">Any sign language can be added by anyone — just record gestures and share the SQLite database file. True community-driven approach.</div>
+      </div>
+      <div class="result-card fade-up d2">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">Offline-First Desktop App</div>
+        <div class="result-desc">Works without internet via pyttsx3 fallback. Distributable as .exe for non-technical users.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Demo & Evidence</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Screenshots & Demo</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/handsign/detection.png" alt="Hand sign detection with MediaPipe landmarks" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">Real-Time Detection — MediaPipe Landmark Overlay</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d1" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/handsign/gestures.png" alt="Gesture library database" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">Gesture Library — Plug & Play Community Database</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div class="project-nav-row">
+    <a href="payroll.html" class="project-nav-link"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br><span class="project-nav-title">Payroll Suite</span></a>
+    <a href="trufleet.html" class="project-nav-link" style="text-align:right;">Next <i class="fas fa-arrow-right" style="font-size:8px;"></i><br><span class="project-nav-title">TruFleet</span></a>
+  </div>
+
+  <script src="../assets/main.js"></script>
+</body>
+</html>

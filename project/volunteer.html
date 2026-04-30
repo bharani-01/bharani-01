@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const s=localStorage.getItem('bk-portfolio-theme');const d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s==='dark'||(!s&&d)?'dark':'light');}catch(e){}</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Connect — MVC Platform | Bharani KR</title>
+  <meta name="description" content="Full-featured volunteer management platform with dual-role accounts, application workflow, messaging system, and reviews on clean MVC architecture.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-loader" id="page-loader"><div class="loader-logo">B<span>K</span></div><div class="loader-bar"></div></div>
+  <div id="scroll-progress"></div><div class="grid-blueprint"></div>
+  <nav><a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div><div class="nav-actions"><button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button><button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button></div></nav>
+  <div class="mobile-nav" id="mobile-nav"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div>
+
+  <!-- HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.5rem;"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects</a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1"><span class="tier-badge">FEATURED</span><span class="tag">10 / 10</span></div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2" style="font-size: clamp(2.5rem, 7vw, 4.5rem);">Volunteer Connect</h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">Full-featured volunteer management platform with dual-role accounts, application workflow, real-time messaging, and star-rating review system — built on clean MVC architecture.</p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span>
+      <span class="tag">EJS</span><span class="tag">bcryptjs</span><span class="tag">MVC</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5"><a href="https://github.com/bharani-01" target="_blank" class="btn-primary">View Source <i class="fab fa-github"></i></a></div>
+    <div class="flex flex-wrap gap-4 mt-4 fade-up d5" style="font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--text-subtle);"><span><i class="fas fa-user" style="margin-right:4px;"></i> Solo Project</span></div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background:var(--surface);border-bottom:1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up"><div class="detail-metric-number">2</div><div class="detail-metric-label">Account Roles</div></div>
+      <div class="detail-metric fade-up d1"><div class="detail-metric-number">MVC</div><div class="detail-metric-label">Architecture</div></div>
+      <div class="detail-metric fade-up d2"><div class="detail-metric-number">Full</div><div class="detail-metric-label">Application Workflow</div></div>
+      <div class="detail-metric fade-up d3"><div class="detail-metric-number">⭐</div><div class="detail-metric-label">Review System</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up"><span class="section-label">// Problem Statement</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">The Challenge</h2></div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Volunteer organizations and potential volunteers have no unified platform for opportunity discovery, application management, and direct communication. Everything happens through disconnected emails, WhatsApp groups, and spreadsheets.</p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">No discovery platform</strong> — volunteers can't browse available opportunities in one place</li>
+          <li><strong class="c-text">No application tracking</strong> — organizations manage applicants via spreadsheets or email threads</li>
+          <li><strong class="c-text">No direct messaging</strong> — communication scattered across WhatsApp, email, and phone calls</li>
+          <li><strong class="c-text">No feedback system</strong> — no way for volunteers to review organizations or vice versa</li>
+          <li><strong class="c-text">No accountability</strong> — no audit trail for application status changes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// My Approach</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Engineering Thinking</h2></div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Designed as a <strong class="c-text">dual-role platform</strong> — users register as either a Volunteer or an Organization. Both roles share the same auth system but see completely different dashboards and capabilities. This avoids the complexity of a single "super user" model.</p>
+        <p class="c-muted leading-relaxed mb-4">The application workflow follows a <strong class="c-text">state machine pattern</strong>: Browse → Apply → Pending → Approved/Rejected. Each transition is logged, and both parties can track the current state at any time.</p>
+        <p class="c-muted leading-relaxed">Built on strict <strong class="c-text">MVC architecture</strong> — Models (Mongoose schemas), Views (EJS templates), Controllers (Express route handlers). This separation made the codebase easy to navigate and extend as features were added iteratively.</p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen"><div class="approach-tag chosen">CHOSEN</div><p class="c-text text-sm font-semibold mb-1">Node.js + Express + MongoDB (MVC)</p><p class="c-muted text-sm leading-relaxed">Clean separation of concerns. EJS server-side rendering for fast initial load. MongoDB for flexible document schemas.</p></div>
+        <div class="approach-rejected"><div class="approach-tag rejected">REJECTED</div><p class="c-text text-sm font-semibold mb-1">React SPA + REST API</p><p class="c-muted text-sm leading-relaxed">Overkill for the scope. Server-rendered EJS is faster to develop solo and doesn't need a separate frontend build step.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVE -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Technical Deep-Dive</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Key Systems</h2></div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Dual-Role Account System</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Volunteer accounts: browse opportunities, apply, message, review</li>
+          <li>Organization accounts: post opportunities, manage applicants, respond</li>
+          <li>bcryptjs password hashing with salt rounds</li>
+          <li>Session store persisted in MongoDB</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Application Workflow</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Browse → Apply → Pending → Approved / Rejected</li>
+          <li>Status transitions logged with timestamps</li>
+          <li>Both parties see current application state</li>
+          <li>Organization can bulk-approve or reject applicants</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Messaging System</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Conversation threads per opportunity application</li>
+          <li>Organization ↔ Volunteer direct messaging</li>
+          <li>Message history persisted in MongoDB</li>
+          <li>Notification indicators for unread messages</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Review & Rating System</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Star rating (1–5) + text review per experience</li>
+          <li>Reviews visible on organization profile</li>
+          <li>Average rating computed and displayed</li>
+          <li>Review moderation capability for admins</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Challenges</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What Broke & What I Learned</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div><div class="challenge-title">Dual-Role Authorization Complexity</div>
+        <div class="challenge-body">Ensuring <strong>Volunteers can't access Organization-only routes</strong> (and vice versa) required careful middleware layering. A single missed auth check on one route could expose the wrong dashboard. Built role-specific middleware that wraps every route group.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Never rely on UI hiding for access control. Every route must independently verify the user's role server-side.</div>
+      </div>
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div><div class="challenge-title">Mongoose Schema Design for Conversations</div>
+        <div class="challenge-body">Modeling <strong>conversations between two different user types</strong> (Volunteer and Organization) with MongoDB references was tricky. Had to decide between embedding messages in application documents vs. a separate conversations collection. Chose separate collection for scalability.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: In MongoDB, embed for read-heavy data, reference for write-heavy data. Conversations are write-heavy — they grow unbounded.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Results</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What It Achieved</h2></div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up"><div class="result-label">Outcome</div><div class="result-title">Complete Platform</div><div class="result-desc">Dual-role accounts, opportunity listing, application workflow, messaging, and reviews — full volunteer management lifecycle.</div></div>
+      <div class="result-card fade-up d1"><div class="result-label">Outcome</div><div class="result-title">Clean MVC Codebase</div><div class="result-desc">Strict Model-View-Controller separation with Express. Easy to extend, audit, and maintain as a solo developer.</div></div>
+      <div class="result-card fade-up d2"><div class="result-label">Outcome</div><div class="result-title">Secure Auth System</div><div class="result-desc">bcryptjs hashing, role-based route protection, MongoDB session store, and CSRF-safe form handling.</div></div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Demo & Evidence</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Screenshots</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="video-placeholder fade-up"><i class="fas fa-desktop"></i><span>Platform Dashboard — Coming Soon</span></div>
+      <div class="video-placeholder fade-up d1"><i class="fas fa-comments"></i><span>Messaging System — Coming Soon</span></div>
+    </div>
+  </section>
+
+  <div class="project-nav-row">
+    <a href="attendpro.html" class="project-nav-link"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br><span class="project-nav-title">AttendPro</span></a>
+    <div></div>
+  </div>
+  <script src="../assets/main.js"></script>
+</body>
+</html>

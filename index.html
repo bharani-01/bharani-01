@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Anti-flash theme init — must run before CSS -->
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme',
+        s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bharani KR — IoT & Cyber Security Engineer</title>
+  <meta name="description" content="Portfolio of Bharani KR — B.Tech Cyber Security & IoT at SRET, Chennai. Building intelligent embedded systems, AI vision pipelines, and full-stack applications.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta property="og:title" content="Bharani KR — IoT & Cyber Security Engineer">
+  <meta property="og:description" content="Building intelligent embedded systems, AI vision pipelines, and full-stack applications. 10+ projects. B.Tech SRET Chennai.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bharani-01.github.io/">
+  <meta name="twitter:card" content="summary">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="page-loader">
+    <div class="loader-logo">B<span>K</span></div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <div id="scroll-progress"></div>
+  <canvas id="circuit-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; opacity: 0.8;"></canvas>
+  <div class="grid-blueprint"></div>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <nav>
+    <a href="index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">Identity</a>
+      <a href="projects.html">Engineering</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button id="mob-toggle" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">Identity</a>
+    <a href="projects.html">Engineering</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="flex flex-col justify-center" style="min-height: 100vh; padding-top: 70px;">
+    <div class="fade-up d1">
+      <span class="section-label">B.Tech Cyber Security &amp; IoT — SRET, Chennai</span>
+    </div>
+
+    <h1 class="name-reveal heading-font tracking-tighter leading-none mb-6 fade-up d2"
+        style="font-size: clamp(3.5rem, 11vw, 120px); font-weight: 800;">
+      BHARANI KR.
+    </h1>
+
+    <p class="fade-up d3 c-muted font-light tracking-tight max-w-3xl mb-10"
+       style="font-size: clamp(1.5rem, 3.5vw, 2.75rem);">
+      Architecting the <span class="c-text font-semibold" style="font-style:italic;"><span id="typed-text" data-text="intelligent edge."></span></span>
+    </p>
+
+    <div class="flex flex-wrap gap-3 mb-10 fade-up d4">
+      <span class="tag">Embedded AI Developer</span>
+      <span class="tag">Cyber + IoT Engineer</span>
+      <span class="tag">Systems Programmer</span>
+    </div>
+
+    <!-- Now Building badge -->
+    <div class="fade-up d4" style="margin-bottom: 1rem;">
+      <span class="now-building">
+        <span class="now-building-dot"></span>
+        Now building: TITAN-V2 Extended Range Module
+      </span>
+    </div>
+
+    <!-- Internship Availability Badge -->
+    <div class="fade-up d4" style="margin-bottom: 2rem;">
+      <span class="badge-available" style="display:inline-flex; align-items:center; gap:0.5rem;">
+        <span class="badge-dot"></span>
+        Open for Summer 2026 Internships — Embedded Systems / AI-ML / IoT
+      </span>
+    </div>
+
+    <div class="flex flex-wrap gap-4 fade-up d5">
+      <a href="projects.html" class="btn-primary">
+        View Engineering Work <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+      </a>
+      <a href="about.html" class="btn-outline">
+        Identity Profile
+      </a>
+      <a href="assets/Bharani_KR_Resume.pdf" target="_blank" class="btn-outline" style="border-color: var(--primary); color: var(--primary);">
+        <i class="fas fa-file-pdf" style="margin-right:0.4rem;"></i> Download Resume
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════ METRICS DASHBOARD ═══════════════ -->
+  <section class="compact" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="stats-row grid grid-cols-2 md:grid-cols-4 gap-5">
+
+      <div class="metric-card fade-up">
+        <div class="metric-icon"><i class="fas fa-layer-group"></i></div>
+        <div class="metric-accent"></div>
+        <div class="stat-number"><span class="counter" data-target="10" data-suffix="+">10+</span></div>
+        <div class="stat-label">Projects Deployed</div>
+        <div class="metric-sub">AI · IoT · Web · Systems</div>
+      </div>
+
+      <div class="metric-card fade-up d1">
+        <div class="metric-icon"><i class="fas fa-crosshairs"></i></div>
+        <div class="metric-accent"></div>
+        <div class="stat-number"><span class="counter" data-target="95" data-suffix="%">95%</span></div>
+        <div class="stat-label">ANPR Accuracy</div>
+        <div class="metric-sub">YOLOv11 — Live campus feed</div>
+      </div>
+
+      <div class="metric-card fade-up d2">
+        <div class="metric-icon"><i class="fas fa-users"></i></div>
+        <div class="metric-accent"></div>
+        <div class="stat-number"><span class="counter" data-target="500" data-suffix="+">500+</span></div>
+        <div class="stat-label">Concurrent Users</div>
+        <div class="metric-sub">AttendPro — production load</div>
+      </div>
+
+      <div class="metric-card award-card fade-up d3">
+        <div class="metric-icon award-icon"><i class="fas fa-trophy"></i></div>
+        <div class="metric-accent award-accent"></div>
+        <div class="stat-number" style="color: #f59e0b;">🥈 2nd</div>
+        <div class="stat-label">VIT TetherX 2026</div>
+        <div class="metric-sub">National IoT Hackathon</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ FEATURED PROJECTS ═══════════════ -->
+  <section>
+    <div class="mb-16 fade-up">
+      <span class="section-label">// Flagship Engineering</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: clamp(2.5rem, 5vw, 3.5rem);">
+        Top Case Studies
+      </h2>
+    </div>
+
+    <div class="space-y-24">
+
+      <!-- PROJECT 1: RoadCams -->
+      <div class="project-reveal">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="tier-badge">FLAGSHIP</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.75rem;">
+              RoadCams — Campus AI Surveillance
+            </h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">YOLOv11</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">Flask</span>
+              <span class="tag">PostgreSQL</span>
+            </div>
+            <a href="https://github.com/bharani-01" target="_blank" class="btn-primary">
+              GitHub <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Manual campus vehicle monitoring left critical security gaps — no audit trail, no real-time detection, no spatial coverage analysis.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">Live Feed → YOLOv11 ALPR → LCS Geospatial Mapping → PostgreSQL Audit → Live Web Dashboard</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>Custom-trained YOLOv11 ANPR model</li>
+                  <li>LCS pairwise camera coverage analysis</li>
+                  <li>Geospatial campus map with Leaflet.js</li>
+                  <li>Snapshot archiving + detection log (CSV)</li>
+                </ul>
+                <p class="proj-h5">Result</p>
+                <p class="c-text font-bold">95%+ plate detection accuracy in live campus deployment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: TITAN-V2 -->
+      <div class="project-reveal">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="tier-badge">FLAGSHIP</span>
+              <span class="tier-badge award">🥈 VIT TetherX 2026</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.75rem;">
+              TITAN-V2 Agricultural Rover
+            </h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">ESP8266</span>
+              <span class="tag">MPU-6050</span>
+              <span class="tag">WebSocket</span>
+              <span class="tag">C++</span>
+            </div>
+            <a href="https://github.com/bharani-01" target="_blank" class="btn-primary">
+              GitHub <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Agricultural terrain monitoring requires real-time multi-sensor telemetry with obstacle detection and 6-axis orientation tracking over wireless links.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">ESP8266 Firmware → I2C MPU-6050 + 4× Ultrasonic → WebSocket → Mission Control Dashboard</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>6-axis IMU orientation & motion tracking</li>
+                  <li>4-sensor ultrasonic proximity array</li>
+                  <li>Real-time WebSocket telemetry dashboard</li>
+                  <li>Autonomous hazard detection logic</li>
+                </ul>
+                <p class="proj-h5">Result</p>
+                <p class="c-text font-bold">🥈 2nd Place — VIT TetherX 2026 National IoT Hackathon.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: PAYROLL C++ -->
+      <div class="project-reveal">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="tier-badge">FLAGSHIP</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.75rem;">
+              Payroll Suite — C++17 REST
+            </h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">C++17</span>
+              <span class="tag">httplib</span>
+              <span class="tag">SQLite</span>
+              <span class="tag">BCrypt</span>
+            </div>
+            <a href="https://github.com/bharani-01" target="_blank" class="btn-primary">
+              GitHub <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Organizations needed a portable, dependency-free payroll engine with verifiable security — no Node, no Python, no runtime required.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">C++17 HTTP Server → BCrypt Auth → SQLite → Static HTML/JS Dashboard → PDF Payslip Engine</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>Full REST API in raw C++17, zero frameworks</li>
+                  <li>3-tier RBAC: Admin / Manager / Employee</li>
+                  <li>BCrypt password hashing, bearer tokens</li>
+                  <li>PDF payslip generation + CSV bulk import</li>
+                </ul>
+                <p class="proj-h5">Why It Stands Out</p>
+                <p class="c-text font-bold">Pure systems thinking — production-grade REST server with no runtime dependencies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-16 text-center fade-up">
+      <a href="projects.html" class="btn-outline">
+        View All 10 Projects <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TECH STACK STRIP ═══════════════ -->
+  <section class="compact" style="background: var(--surface); border-top: 1px solid var(--border);">
+    <span class="section-label">// Core Technology Stack</span>
+    <div class="flex flex-wrap gap-3 mt-2">
+      <span class="tag">Python</span>
+      <span class="tag">C++17</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">React</span>
+      <span class="tag">Next.js</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">Flask</span>
+      <span class="tag">YOLOv8/11</span>
+      <span class="tag">MediaPipe</span>
+      <span class="tag">OpenCV</span>
+      <span class="tag">ESP8266</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">SQLite</span>
+      <span class="tag">Supabase</span>
+      <span class="tag">WebSocket</span>
+      <span class="tag">MongoDB</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA FOOTER ═══════════════ -->
+  <div class="cta-dark">
+    <h2 class="heading-font font-bold tracking-tighter mb-6 fade-up"
+        style="font-size: clamp(2.5rem, 7vw, 5.5rem);">
+      Let's build<br>
+      <span style="color: var(--primary);">something real.</span>
+    </h2>
+    <div class="flex flex-col md:flex-row justify-center gap-4 mb-12 fade-up d2">
+      <a href="contact.html" class="cta-btn-solid">
+        Start a Conversation
+      </a>
+      <a href="projects.html" class="cta-btn-ghost">
+        Review My Work
+      </a>
+    </div>
+    <p class="cta-sub" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      Bharani KR // B.Tech Cyber Security &amp; IoT // SRET, Chennai — 2026
+    </p>
+  </div>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

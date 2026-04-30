@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const s=localStorage.getItem('bk-portfolio-theme');const d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s==='dark'||(!s&&d)?'dark':'light');}catch(e){}</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student ERP — SIH Platform | Bharani KR</title>
+  <meta name="description" content="Comprehensive student management ERP built for inter-college hackathon using Python Flask. Admissions, hostel, fees, exams under unified 3-tier RBAC.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-loader" id="page-loader"><div class="loader-logo">B<span>K</span></div><div class="loader-bar"></div></div>
+  <div id="scroll-progress"></div><div class="grid-blueprint"></div>
+  <nav><a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div><div class="nav-actions"><button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button><button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button></div></nav>
+  <div class="mobile-nav" id="mobile-nav"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div>
+
+  <!-- HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.5rem;"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects</a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1"><span class="tier-badge">MAJOR</span><span class="tier-badge award">SIH Entry</span><span class="tag">07 / 10</span></div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2" style="font-size: clamp(2.5rem, 7vw, 4.5rem);">Student ERP</h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">Comprehensive student lifecycle management platform — admissions, courses, hostel allocation, fee tracking, exams, and PDF report generation under a unified 3-tier RBAC system.</p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">ReportLab</span><span class="tag">Jinja2</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5"><a href="https://github.com/bharani-01" target="_blank" class="btn-primary">View Source <i class="fab fa-github"></i></a></div>
+    <div class="flex flex-wrap gap-4 mt-4 fade-up d5" style="font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--text-subtle);">
+      <span><i class="fas fa-user" style="margin-right:4px;"></i> Solo Project</span>
+      <span><i class="fas fa-building" style="margin-right:4px;"></i> Inter-College Hackathon</span>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background:var(--surface);border-bottom:1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up"><div class="detail-metric-number">6</div><div class="detail-metric-label">Core Modules</div></div>
+      <div class="detail-metric fade-up d1"><div class="detail-metric-number">3-Tier</div><div class="detail-metric-label">RBAC System</div></div>
+      <div class="detail-metric fade-up d2"><div class="detail-metric-number">PDF</div><div class="detail-metric-label">Report Generation</div></div>
+      <div class="detail-metric fade-up d3"><div class="detail-metric-number">Flask</div><div class="detail-metric-label">Python Backend</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up"><span class="section-label">// Problem Statement</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">The Challenge</h2></div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Indian universities manage student data across disconnected spreadsheets and paper registers. The SIH problem required a unified digital platform covering the <strong class="c-text">entire student lifecycle</strong> from admission to graduation.</p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">Fragmented data</strong> — admissions, fees, hostel, exams all tracked separately</li>
+          <li><strong class="c-text">No role-based access</strong> — students, staff, and admin all see the same data</li>
+          <li><strong class="c-text">No automated reporting</strong> — fee receipts, exam results, hostel records generated manually</li>
+          <li><strong class="c-text">No room allocation logic</strong> — hostel beds assigned arbitrarily without occupancy tracking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// My Approach</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Engineering Thinking</h2></div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Designed as a <strong class="c-text">modular monolith</strong> — each module (admissions, courses, hostel, fees, exams, reports) is a separate Flask blueprint with shared database models and authentication. This made development fast while keeping code organized.</p>
+        <p class="c-muted leading-relaxed mb-4">Authentication uses <strong class="c-text">decorator-based route protection</strong> — each endpoint is annotated with required role level (Student/Staff/Admin). The RBAC system uses Python decorators to wrap Flask routes, making access control declarative and easy to audit.</p>
+        <p class="c-muted leading-relaxed">PDF generation via <strong class="c-text">ReportLab</strong> produces professional fee receipts and exam reports. Jinja2 templating handles the dynamic HTML rendering with server-side data injection.</p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen"><div class="approach-tag chosen">CHOSEN</div><p class="c-text text-sm font-semibold mb-1">Flask + SQLAlchemy modular monolith</p><p class="c-muted text-sm leading-relaxed">6 blueprints, shared ORM models, decorator-based RBAC. Fast hackathon development with clean code organization.</p></div>
+        <div class="approach-rejected"><div class="approach-tag rejected">REJECTED</div><p class="c-text text-sm font-semibold mb-1">Django with Django Admin</p><p class="c-muted text-sm leading-relaxed">Django's admin UI is powerful but too opinionated. Needed full control over each module's UI for the hackathon demo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVE -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// The 6 Modules</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Module Breakdown</h2></div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="surface-card p-6 fade-up"><p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Admissions</p><p class="c-muted text-sm leading-relaxed">Student registration, document upload, admission status tracking, and enrollment confirmation.</p></div>
+      <div class="surface-card p-6 fade-up d1"><p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Courses</p><p class="c-muted text-sm leading-relaxed">Course catalog, student enrollment, faculty assignment, and attendance tracking per subject.</p></div>
+      <div class="surface-card p-6 fade-up d2"><p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Hostel</p><p class="c-muted text-sm leading-relaxed">Room allocation with occupancy tracking, block/floor/room hierarchy, and vacancy management.</p></div>
+      <div class="surface-card p-6 fade-up d3"><p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Fees</p><p class="c-muted text-sm leading-relaxed">Fee structure management, payment tracking, due alerts, and PDF receipt generation via ReportLab.</p></div>
+      <div class="surface-card p-6 fade-up d4"><p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Exams</p><p class="c-muted text-sm leading-relaxed">Exam scheduling, marks entry, grade computation, and result publication with PDF export.</p></div>
+      <div class="surface-card p-6 fade-up d5"><p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Reports</p><p class="c-muted text-sm leading-relaxed">Cross-module analytics — attendance summaries, fee defaulter lists, hostel occupancy reports.</p></div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Challenges</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What Broke & What I Learned</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div><div class="challenge-title">6 Modules Solo Under Hackathon Pressure</div>
+        <div class="challenge-body">Building admissions, courses, hostel, fees, exams, and reports <strong>alone under hackathon time constraints</strong> meant brutal scope management. Had to identify the minimum viable feature per module and cut everything else.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: In hackathons, breadth beats depth. Show 6 working modules with core features, not 2 polished ones.</div>
+      </div>
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div><div class="challenge-title">SQLAlchemy Relationship Complexity</div>
+        <div class="challenge-body">6 modules meant <strong>deeply interconnected database models</strong> — students linked to courses, courses to exams, exams to fees, fees to receipts. Managing SQLAlchemy relationships and avoiding circular imports across Flask blueprints was the hardest architectural challenge.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Plan your ORM model graph before writing any blueprint code. Circular dependencies in Flask blueprints are painful to debug.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Results</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What It Achieved</h2></div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up"><div class="result-label">Outcome</div><div class="result-title">Complete Student Lifecycle</div><div class="result-desc">Admission to graduation covered in one platform — 6 modules under a unified 3-tier RBAC system.</div></div>
+      <div class="result-card fade-up d1"><div class="result-label">Outcome</div><div class="result-title">PDF Report Generation</div><div class="result-desc">Fee receipts, exam results, and hostel records generated as professional PDF documents via ReportLab.</div></div>
+      <div class="result-card fade-up d2"><div class="result-label">Outcome</div><div class="result-title">SIH Hackathon Entry</div><div class="result-desc">Solo-built submission for Smart India Hackathon demonstrating full-stack Python/Flask capabilities.</div></div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Demo & Evidence</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Screenshots</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden;border:1px solid var(--border);"><img src="../assets/images/erp/dashboard.png" alt="Student ERP Dashboard" style="width:100%;display:block;" loading="lazy">
+        <div style="padding:0.75rem 1rem;background:var(--surface-alt);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">ERP Dashboard — Module Overview</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div></div>
+    </div>
+  </section>
+
+  <div class="project-nav-row">
+    <a href="compiler.html" class="project-nav-link"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br><span class="project-nav-title">Online Compiler</span></a>
+    <a href="inventory.html" class="project-nav-link" style="text-align:right;">Next <i class="fas fa-arrow-right" style="font-size:8px;"></i><br><span class="project-nav-title">Inventory Management</span></a>
+  </div>
+  <script src="../assets/main.js"></script>
+</body>
+</html>

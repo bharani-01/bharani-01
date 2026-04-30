@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const s=localStorage.getItem('bk-portfolio-theme');const d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s==='dark'||(!s&&d)?'dark':'light');}catch(e){}</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AttendPro — Anti-Proxy Attendance | Bharani KR</title>
+  <meta name="description" content="Cross-platform attendance system with Flutter mobile apps (Android + iOS), anti-proxy detection via device fingerprinting and geo-fencing, and automated faculty reports.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-loader" id="page-loader"><div class="loader-logo">B<span>K</span></div><div class="loader-bar"></div></div>
+  <div id="scroll-progress"></div><div class="grid-blueprint"></div>
+  <nav><a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div><div class="nav-actions"><button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button><button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button></div></nav>
+  <div class="mobile-nav" id="mobile-nav"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div>
+
+  <!-- HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.5rem;"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects</a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1"><span class="tier-badge">FEATURED</span><span class="tag">09 / 10</span></div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2" style="font-size: clamp(2.5rem, 7vw, 4.5rem);">AttendPro</h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">Cross-platform anti-proxy attendance system — Flutter mobile apps (Android + iOS), web dashboard (HTML/CSS/JS), device fingerprinting, geo-fencing, and automated faculty reports.</p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">HTML/CSS/JS</span>
+      <span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Express</span><span class="tag">Render</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5">
+      <a href="https://attendpro-2uf0.onrender.com/" target="_blank" class="btn-primary">Live Demo (Web) <i class="fas fa-external-link-alt"></i></a>
+      <a href="https://github.com/bharani-01" target="_blank" class="btn-primary" style="background:transparent;border:1px solid var(--border);color:var(--text);">View Source <i class="fab fa-github"></i></a>
+    </div>
+    <!-- Demo Credentials -->
+    <div class="fade-up d5" style="margin-top:1.25rem; padding:1rem 1.25rem; border:1px solid var(--border); background:var(--surface-alt); max-width:480px;">
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--primary); margin-bottom:0.6rem;">
+        <i class="fas fa-key" style="margin-right:4px;"></i> Demo Credentials
+      </p>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem;">
+        <div style="padding:0.5rem; border:1px solid var(--border); text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-subtle); margin-bottom:3px;">Admin</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text);">admin@college.edu</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">admin123</div>
+        </div>
+        <div style="padding:0.5rem; border:1px solid var(--border); text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-subtle); margin-bottom:3px;">Faculty</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text);">f1@clg</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">123456</div>
+        </div>
+        <div style="padding:0.5rem; border:1px solid var(--border); text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-subtle); margin-bottom:3px;">Student</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text);">stu1@clg</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">123456</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-4 fade-up d5" style="font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--text-subtle);">
+      <span><i class="fas fa-user" style="margin-right:4px;"></i> Solo Project</span>
+      <span><i class="fas fa-mobile-alt" style="margin-right:4px;"></i> Android + iOS + Web</span>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background:var(--surface);border-bottom:1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up"><div class="detail-metric-number">500+</div><div class="detail-metric-label">Concurrent Users</div></div>
+      <div class="detail-metric fade-up d1"><div class="detail-metric-number">3</div><div class="detail-metric-label">Platforms (Android/iOS/Web)</div></div>
+      <div class="detail-metric fade-up d2"><div class="detail-metric-number">Anti</div><div class="detail-metric-label">Proxy Detection</div></div>
+      <div class="detail-metric fade-up d3"><div class="detail-metric-number">Auto</div><div class="detail-metric-label">Faculty Reports</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up"><span class="section-label">// Problem Statement</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">The Challenge</h2></div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Traditional attendance systems are plagued by proxy attendance — students mark attendance for absent friends. Faculty spend hours compiling manual reports that are unreliable. Existing digital solutions are either web-only or lack anti-fraud mechanisms.</p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">Proxy attendance</strong> — one student marks for multiple absent classmates</li>
+          <li><strong class="c-text">No mobile native app</strong> — web-only solutions have poor UX on phones</li>
+          <li><strong class="c-text">No device verification</strong> — no way to confirm attendance is from the student's own device</li>
+          <li><strong class="c-text">No location validation</strong> — students can mark attendance from home</li>
+          <li><strong class="c-text">Manual report compilation</strong> — faculty manually count and calculate percentages</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// My Approach</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Engineering Thinking</h2></div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Built a <strong class="c-text">three-platform system</strong>: Flutter for Android + iOS mobile apps with native device access, and a web dashboard using HTML/CSS/JS for faculty administration. This ensures students use native apps (better fingerprinting, GPS access) while faculty manage everything from a browser.</p>
+        <p class="c-muted leading-relaxed mb-4">Anti-proxy works via <strong class="c-text">triple verification</strong>: device fingerprinting (hardware ID unique per phone), geo-fencing (student must be within campus radius), and time-window validation (attendance only open during scheduled class hours). All three must pass simultaneously.</p>
+        <p class="c-muted leading-relaxed">Faculty reports are <strong class="c-text">fully automated</strong> — attendance percentages, defaulter lists, subject-wise breakdown, and CSV exports generated without any manual calculation.</p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen"><div class="approach-tag chosen">CHOSEN</div><p class="c-text text-sm font-semibold mb-1">Flutter (Android + iOS) + Web Dashboard</p><p class="c-muted text-sm leading-relaxed">Single Dart codebase for both mobile platforms. Native device access for fingerprinting and GPS. Web dashboard for faculty.</p></div>
+        <div class="approach-rejected"><div class="approach-tag rejected">REJECTED</div><p class="c-text text-sm font-semibold mb-1">Web-only PWA approach</p><p class="c-muted text-sm leading-relaxed">PWAs can't access hardware device IDs reliably. Native apps provide stronger device fingerprinting for anti-proxy.</p></div>
+        <div class="approach-rejected"><div class="approach-tag rejected">REJECTED</div><p class="c-text text-sm font-semibold mb-1">Separate Android (Kotlin) + iOS (Swift)</p><p class="c-muted text-sm leading-relaxed">Double the development effort for the same result. Flutter's cross-platform approach was faster for a solo developer.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Tech Stack</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Why These Technologies</h2></div>
+    <div class="tech-reason-grid fade-up d1">
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-mobile-alt"></i></div><div><div class="tech-reason-name">Flutter + Dart</div><div class="tech-reason-why">Single codebase for Android + iOS. Native device access for hardware fingerprinting, GPS, and camera.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-globe"></i></div><div><div class="tech-reason-name">HTML/CSS/JS</div><div class="tech-reason-why">Lightweight faculty web dashboard. No framework overhead — fast load times for report viewing and management.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fab fa-node-js"></i></div><div><div class="tech-reason-name">Node.js + Express</div><div class="tech-reason-why">REST API backend handling 500+ concurrent student connections. Non-blocking I/O for high-concurrency attendance marking.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-database"></i></div><div><div class="tech-reason-name">MongoDB</div><div class="tech-reason-why">Flexible schema for attendance records. Easy aggregation for attendance percentage calculations and defaulter queries.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-fingerprint"></i></div><div><div class="tech-reason-name">Device Fingerprinting</div><div class="tech-reason-why">Hardware-level device identification ensures one student = one device. Prevents multi-account proxy attempts.</div></div></div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVE -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Technical Deep-Dive</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Key Systems</h2></div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Anti-Proxy Triple Check</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Device fingerprint — hardware ID unique per phone</li>
+          <li>Geo-fence — GPS must be within campus boundary</li>
+          <li>Time-window — attendance only during scheduled hours</li>
+          <li>Duplicate detection — same device can't mark twice per session</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Automated Faculty Reports</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Auto-computed attendance percentages per student</li>
+          <li>Defaulter list generation (below threshold %)</li>
+          <li>Subject-wise attendance breakdown</li>
+          <li>CSV export per class/section/subject</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Flutter Mobile App</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Student view: one-tap attendance marking</li>
+          <li>Faculty view: class roster with present/absent toggles</li>
+          <li>Material Design 3 UI with platform-adaptive widgets</li>
+          <li>Offline-first: queues attendance if network drops</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">High-Concurrency API</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>500+ simultaneous student connections at peak</li>
+          <li>MongoDB aggregation pipeline for real-time analytics</li>
+          <li>Session-based duplicate prevention</li>
+          <li>Rate limiting to prevent automated abuse</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Challenges & Failures</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What Broke & What I Learned</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div><div class="challenge-title">GPS Accuracy Inside Buildings</div>
+        <div class="challenge-body">Geo-fencing worked well outdoors, but <strong>indoor GPS accuracy dropped to 20–50 meters</strong>. Students in adjacent buildings were incorrectly marked as "within range." Had to widen the geo-fence radius and add WiFi-based location hints as a secondary signal.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: GPS alone isn't reliable indoors. Multi-signal location (GPS + WiFi + cell tower) improves accuracy significantly.</div>
+      </div>
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div><div class="challenge-title">Flutter Build for Both Platforms Solo</div>
+        <div class="challenge-body">Building for both Android and iOS as a solo developer meant <strong>dealing with two different build toolchains</strong> — Gradle for Android, Xcode for iOS. iOS signing certificates and provisioning profiles were especially painful to configure without a Mac initially.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Flutter's "write once" promise is real for code, but build/deploy is still platform-specific. Budget time for platform toolchain setup.</div>
+      </div>
+      <div class="challenge-card fade-up d2">
+        <div class="challenge-num">Challenge 03</div><div class="challenge-title">500+ Concurrent Connections at Peak</div>
+        <div class="challenge-body">When an entire batch of 500+ students tries to mark attendance in the first 60 seconds of a class, <strong>the API gets hammered simultaneously</strong>. Had to implement request queuing, database connection pooling, and staggered retry logic to prevent timeouts.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Spike traffic is harder than sustained traffic. Design for burst patterns, not just average load.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Results & Impact</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What It Achieved</h2></div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up"><div class="result-label">Outcome</div><div class="result-title">3-Platform Coverage</div><div class="result-desc">Android + iOS + Web — students use native mobile apps, faculty manage via web dashboard. Single backend serves all three.</div></div>
+      <div class="result-card fade-up d1"><div class="result-label">Outcome</div><div class="result-title">Anti-Proxy Triple Verification</div><div class="result-desc">Device fingerprint + geo-fence + time-window. Three independent checks must pass simultaneously to mark attendance.</div></div>
+      <div class="result-card fade-up d2"><div class="result-label">Outcome</div><div class="result-title">Zero Manual Reports</div><div class="result-desc">Faculty never calculate attendance manually. Percentages, defaulter lists, and CSV exports are fully automated.</div></div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Demo & Evidence</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Screenshots & Demo</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden;border:1px solid var(--border);"><img src="../assets/images/attendpro/mobile.png" alt="AttendPro Flutter mobile app — student and faculty views" style="width:100%;display:block;" loading="lazy">
+        <div style="padding:0.75rem 1rem;background:var(--surface-alt);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Flutter Mobile App — Student & Faculty Views</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div></div>
+      <div class="video-placeholder fade-up d1"><i class="fas fa-desktop"></i><span>Web Dashboard — Screenshot Coming Soon</span></div>
+    </div>
+    <div class="mt-6 fade-up d2" style="text-align:center;"><a href="https://attendpro-2uf0.onrender.com/" target="_blank" class="btn-primary" style="display:inline-flex;">Try Live Demo (Web) <i class="fas fa-external-link-alt" style="margin-left:6px;"></i></a></div>
+  </section>
+
+  <div class="project-nav-row">
+    <a href="inventory.html" class="project-nav-link"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br><span class="project-nav-title">Inventory Management</span></a>
+    <a href="volunteer.html" class="project-nav-link" style="text-align:right;">Next <i class="fas fa-arrow-right" style="font-size:8px;"></i><br><span class="project-nav-title">Volunteer Connect</span></a>
+  </div>
+  <script src="../assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme',
+        s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Bharani KR</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="grid-blueprint"></div>
+
+  <nav>
+    <a href="index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">Identity</a>
+      <a href="projects.html">Engineering</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">Identity</a>
+    <a href="projects.html">Engineering</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <section class="flex flex-col items-center justify-center text-center" style="min-height: 100vh; padding-top: 70px;">
+
+    <div class="fade-up" style="margin-bottom: 2rem;">
+      <span class="heading-font c-subtle" style="font-size: clamp(6rem, 20vw, 14rem); font-weight: 800; line-height: 1; opacity: 0.08; display: block;">
+        404
+      </span>
+    </div>
+
+    <span class="section-label fade-up d1">// Error: Route Not Found</span>
+
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2"
+        style="font-size: clamp(2rem, 5vw, 3.5rem); margin-top: 0.5rem;">
+      This page doesn't exist.
+    </h1>
+
+    <p class="c-muted mt-4 max-w-md fade-up d3" style="font-size: 1rem; line-height: 1.7;">
+      The URL you requested could not be found. It may have been moved, renamed, or never existed.
+    </p>
+
+    <div class="mt-4 fade-up d3">
+      <div style="background: var(--surface); border: 1px solid var(--border); padding: 1rem 1.5rem; font-family: 'JetBrains Mono', 'Consolas', monospace; font-size: 12px; color: var(--text-muted); text-align: left; max-width: 400px;">
+        <span style="color: var(--primary); font-weight: 600;">~/bharani &gt;</span> <span class="c-text">GET</span> <span id="lost-path" style="color: #f59e0b;"></span><br>
+        <span style="color: #ef4444;">Error 404:</span> Resource not found<br>
+        <span style="color: var(--primary); font-weight: 600;">~/bharani &gt;</span> <span class="c-text">Redirecting to safety...</span><span class="typed-cursor"></span>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap gap-4 mt-10 fade-up d4">
+      <a href="index.html" class="btn-primary">
+        <i class="fas fa-home" style="font-size:10px;"></i> Go Home
+      </a>
+      <a href="projects.html" class="btn-outline">
+        View Projects
+      </a>
+      <a href="contact.html" class="btn-outline">
+        Contact Me
+      </a>
+    </div>
+
+  </section>
+
+  <script src="assets/main.js"></script>
+  <script>
+    // Show the lost path in the terminal block
+    const lostEl = document.getElementById('lost-path');
+    if (lostEl) lostEl.textContent = window.location.pathname;
+  </script>
+</body>
+</html>

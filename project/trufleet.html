@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TruFleet — Vehicle Authorization Platform | Bharani KR</title>
+  <meta name="description" content="TruFleet: SaaS vehicle authorization platform built at VIT TetherX 2026. Implemented all 6 problem statements. 2nd place, team of 4.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-loader" id="page-loader"><div class="loader-logo">B<span>K</span></div><div class="loader-bar"></div></div>
+  <div id="scroll-progress"></div>
+  <div class="grid-blueprint"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a><a href="../about.html">Identity</a>
+      <a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="../index.html">Home</a><a href="../about.html">Identity</a>
+    <a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.5rem;">
+      <i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects
+    </a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1">
+      <span class="tier-badge">MAJOR</span>
+      <span class="tier-badge award">🥈 VIT TetherX 2026</span>
+      <span class="tag">05 / 10</span>
+    </div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2" style="font-size: clamp(2.5rem, 7vw, 4.5rem);">TruFleet</h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">
+      SaaS vehicle authorization platform implementing all 6 hackathon problem statements — identity management, fleet governance, telemetry, health evaluation, and fault detection.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">React 18</span><span class="tag">Node.js</span><span class="tag">Supabase</span>
+      <span class="tag">PostgreSQL RLS</span><span class="tag">JWT</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5">
+      <a href="https://trufleet-2a1039--trufleet-operations-simplified.asia-southeast1.hosted.app/" target="_blank" class="btn-primary">Live Demo <i class="fas fa-external-link-alt"></i></a>
+      <a href="https://github.com/bharani-01" target="_blank" class="btn-primary" style="background:transparent;border:1px solid var(--border);color:var(--text);">View Source <i class="fab fa-github"></i></a>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-4 fade-up d5" style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--text-subtle);">
+      <span><i class="fas fa-users" style="margin-right:4px;"></i> Team of 4</span>
+      <span><i class="fas fa-trophy" style="margin-right:4px;"></i> 2nd Place — VIT TetherX 2026</span>
+      <span><i class="fas fa-tasks" style="margin-right:4px;"></i> All 6 Problem Statements Solved</span>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background:var(--surface);border-bottom:1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up"><div class="detail-metric-number">🥈</div><div class="detail-metric-label">VIT TetherX 2026</div></div>
+      <div class="detail-metric fade-up d1"><div class="detail-metric-number">6/6</div><div class="detail-metric-label">Problem Statements</div></div>
+      <div class="detail-metric fade-up d2"><div class="detail-metric-number">4</div><div class="detail-metric-label">Team Members</div></div>
+      <div class="detail-metric fade-up d3"><div class="detail-metric-number">Live</div><div class="detail-metric-label">Deployed Demo</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Problem Statements</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">6 Challenges, 1 Platform</h2>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">VIT TetherX presented 6 interconnected problem statements for connected vehicle platforms. Most teams solved 2–3. <strong class="c-text">We implemented all 6 under a unified platform.</strong></p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">PS1 — Owner & Insurance Identity</strong> — Verify vehicle authorization, ownership, and insurance validity before platform interaction</li>
+          <li><strong class="c-text">PS2 — Fleet Governance & Scheduling</strong> — Multi-org vehicle management with visibility control and priority scheduling</li>
+          <li><strong class="c-text">PS3 — Vehicle Telemetry Collection</strong> — Collect speed, temperature, and energy metrics with structured storage and retrieval</li>
+          <li><strong class="c-text">PS4 — Vehicle Health Evaluation</strong> — Rule-based health assessment classifying vehicle condition states</li>
+          <li><strong class="c-text">PS5 — Alert & Fault Detection</strong> — Anomaly detection with prioritized alert generation</li>
+          <li><strong class="c-text">PS6 — Compliance Chain</strong> — 5-step authorization: existence → status → insurance → captain assignment → approval</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Our Approach</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Engineering Thinking</h2>
+    </div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">
+          Instead of building 6 separate solutions, we designed a <strong class="c-text">single unified platform</strong> where each problem statement became a module. The key architectural decision was using <strong class="c-text">Supabase with PostgreSQL Row-Level Security</strong> — every query automatically enforces data isolation between organizations without application-level checks.
+        </p>
+        <p class="c-muted leading-relaxed mb-4">
+          The 5-step compliance chain acts as a <strong class="c-text">state machine</strong>: a vehicle must pass each gate sequentially before being authorized. Any failure at any step blocks all downstream access, creating a tamper-proof audit trail.
+        </p>
+        <p class="c-muted leading-relaxed">
+          JWT tokens carry role claims (Admin/Captain) enabling the frontend to render role-appropriate UI while the backend independently validates every request against the same claims.
+        </p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen">
+          <div class="approach-tag chosen">CHOSEN</div>
+          <p class="c-text text-sm font-semibold mb-1">Unified modular platform</p>
+          <p class="c-muted text-sm leading-relaxed">Single codebase solving all 6 PS. Shared auth, shared DB, shared UI framework. Modules for identity, fleet, telemetry, health, alerts.</p>
+        </div>
+        <div class="approach-chosen">
+          <div class="approach-tag chosen">CHOSEN</div>
+          <p class="c-text text-sm font-semibold mb-1">Supabase + PostgreSQL RLS</p>
+          <p class="c-muted text-sm leading-relaxed">Row-Level Security enforces data isolation at the database layer — no application code needed for multi-tenant access control.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Tech Stack</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Why These Technologies</h2></div>
+    <div class="tech-reason-grid fade-up d1">
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fab fa-react"></i></div><div><div class="tech-reason-name">React 18</div><div class="tech-reason-why">Component-based UI for 6 modules. Fast iteration during hackathon sprint.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fab fa-node-js"></i></div><div><div class="tech-reason-name">Node.js</div><div class="tech-reason-why">Express backend with JWT middleware. Shared auth layer across all 6 problem statement modules.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-database"></i></div><div><div class="tech-reason-name">Supabase</div><div class="tech-reason-why">Managed PostgreSQL with built-in auth, real-time subscriptions, and Row-Level Security policies.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-lock"></i></div><div><div class="tech-reason-name">PostgreSQL RLS</div><div class="tech-reason-why">Deny-all base policy. Each org sees only its own data. Zero application-level access control needed.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-key"></i></div><div><div class="tech-reason-name">JWT Auth</div><div class="tech-reason-why">Token-based auth with role claims (Admin/Captain). Sliding expiry refresh. Stateless verification.</div></div></div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVE — 6 MODULES -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// The 6 Modules</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Problem Statement Breakdown</h2></div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">PS1 · Identity & Insurance</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Ownership verification with document upload</li>
+          <li>Insurance validity checks with expiry alerts</li>
+          <li>5-step compliance gate before platform access</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">PS2 · Fleet Governance</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Multi-org fleet management with RLS isolation</li>
+          <li>Vehicle categorization and priority scheduling</li>
+          <li>Visibility controls per organization tier</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">PS3 · Telemetry Collection</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Structured ingestion of speed, temp, energy metrics</li>
+          <li>Time-series storage with per-vehicle retrieval</li>
+          <li>Recent telemetry API with pagination</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">PS4 · Health Evaluation</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Rule-based health state classification</li>
+          <li>Threshold-driven condition assessment</li>
+          <li>Health score dashboard per vehicle</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d4">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">PS5 · Alert & Fault Detection</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Anomaly detection on telemetry streams</li>
+          <li>Prioritized alert generation (critical/warning/info)</li>
+          <li>Alert history with resolution tracking</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d5">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">PS6 · Compliance Chain</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>5-gate state machine: exist → status → insure → assign → approve</li>
+          <li>Each attempt logged with actor + timestamp</li>
+          <li>Failure at any gate blocks downstream access</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Challenges & Failures</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What Broke & What We Learned</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div>
+        <div class="challenge-title">Solving All 6 PS Under Time Pressure</div>
+        <div class="challenge-body">
+          Most teams targeted 2–3 problem statements. <strong>We committed to all 6.</strong> This forced extreme scope management — we had to prioritize core functionality per module and defer polish. The unified platform approach saved us by sharing auth, DB, and UI components across modules.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Shared infrastructure pays off exponentially when building multiple features under time pressure.</div>
+      </div>
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div>
+        <div class="challenge-title">Supabase RLS Policy Debugging</div>
+        <div class="challenge-body">
+          Row-Level Security policies are powerful but <strong>silently filter rows</strong> — queries return empty results instead of errors when policies deny access. Debugging why data "disappeared" was frustrating until we learned to test policies with different role contexts in the Supabase SQL editor.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: RLS failures are silent by design. Always test policies with multiple user contexts, not just the admin role.</div>
+      </div>
+      <div class="challenge-card fade-up d2">
+        <div class="challenge-num">Challenge 03</div>
+        <div class="challenge-title">Team Coordination — 4 People, 6 Modules</div>
+        <div class="challenge-body">
+          Splitting 6 modules across 4 people meant <strong>every member touched overlapping code.</strong> Git merge conflicts were constant. We solved this by defining strict API contracts early — each module communicates through defined endpoints, reducing direct code dependencies.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: In hackathons, API contracts > code reviews. Define interfaces first, implement independently, merge last.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Results & Impact</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What It Achieved</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up">
+        <div class="result-label">Award</div>
+        <div class="result-title">🥈 2nd Place — VIT TetherX 2026</div>
+        <div class="result-desc">National-level hackathon. Only team to implement all 6 problem statements as a unified platform.</div>
+      </div>
+      <div class="result-card fade-up d1">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">6/6 Problem Statements Solved</div>
+        <div class="result-desc">Identity, fleet governance, telemetry, health evaluation, fault detection, and compliance chain — all working in one platform.</div>
+      </div>
+      <div class="result-card fade-up d2">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">Live Deployed Demo</div>
+        <div class="result-desc">Fully functional demo deployed on Google Cloud, accessible to judges and public during and after the hackathon.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Demo & Evidence</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Screenshots & Demo</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/trufleet/dashboard.png" alt="TruFleet fleet management dashboard" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">Fleet Dashboard — Vehicle Status Overview</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d1" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/trufleet/telemetry.png" alt="Vehicle telemetry monitoring" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">Telemetry — Speed, Temp, Energy Monitoring</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+    </div>
+    <div class="mt-6 fade-up d2" style="text-align:center;">
+      <a href="https://trufleet-2a1039--trufleet-operations-simplified.asia-southeast1.hosted.app/" target="_blank" class="btn-primary" style="display:inline-flex;">
+        Try Live Demo <i class="fas fa-external-link-alt" style="margin-left:6px;"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- NAV -->
+  <div class="project-nav-row">
+    <a href="handsign.html" class="project-nav-link"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br><span class="project-nav-title">Hand Sign to Audio</span></a>
+    <a href="compiler.html" class="project-nav-link" style="text-align:right;">Next <i class="fas fa-arrow-right" style="font-size:8px;"></i><br><span class="project-nav-title">Online Compiler</span></a>
+  </div>
+
+  <script src="../assets/main.js"></script>
+</body>
+</html>

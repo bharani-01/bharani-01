@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme',
+        s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Suite — C++17 REST API | Bharani KR</title>
+  <meta name="description" content="Production-grade Payroll REST API built in raw C++17 with zero frameworks. BCrypt auth, 3-tier RBAC, SQLite, and PDF payslip generation.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <meta property="og:title" content="Payroll Suite — C++17 REST">
+  <meta property="og:description" content="Full REST API in raw C++17. No runtime dependencies. BCrypt, RBAC, PDF generation.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="page-loader" id="page-loader">
+    <div class="loader-logo">B<span>K</span></div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <div id="scroll-progress"></div>
+  <div class="grid-blueprint"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">Identity</a>
+      <a href="../projects.html">Engineering</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">Identity</a>
+    <a href="../projects.html">Engineering</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+
+  <!-- PROJECT HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex; align-items:center; gap:0.4rem; margin-bottom:1.5rem;">
+      <i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects
+    </a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1">
+      <span class="tier-badge">FLAGSHIP</span>
+      <span class="tag">03 / 10</span>
+    </div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2"
+        style="font-size: clamp(2.5rem, 7vw, 4.5rem);">
+      Payroll Suite
+    </h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">
+      Production-grade REST API built entirely in raw C++17 — no Node, no Python, no runtime. BCrypt authentication, 3-tier RBAC, and PDF payslip generation.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">C++17</span><span class="tag">httplib</span><span class="tag">SQLite</span>
+      <span class="tag">BCrypt</span><span class="tag">wkhtmltopdf</span><span class="tag">JSON</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5">
+      <a href="https://github.com/bharani-01" target="_blank" class="btn-primary">
+        View Source <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background: var(--surface); border-bottom: 1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up">
+        <div class="detail-metric-number">C++17</div>
+        <div class="detail-metric-label">Pure Systems Lang</div>
+      </div>
+      <div class="detail-metric fade-up d1">
+        <div class="detail-metric-number">0</div>
+        <div class="detail-metric-label">Runtime Dependencies</div>
+      </div>
+      <div class="detail-metric fade-up d2">
+        <div class="detail-metric-number">3-Tier</div>
+        <div class="detail-metric-label">RBAC System</div>
+      </div>
+      <div class="detail-metric fade-up d3">
+        <div class="detail-metric-number">PDF</div>
+        <div class="detail-metric-label">Payslip Generation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Problem Statement</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">The Challenge</h2>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">
+          Most payroll systems depend on heavy runtimes (Node.js, Python, JVM) making deployment complex and the attack surface broad. The challenge was to build a complete payroll management system using only compiled, systems-level code:
+        </p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">Zero-dependency deployment</strong> — single compiled binary, no runtime installation required</li>
+          <li><strong class="c-text">Verifiable security</strong> — BCrypt hashing with no third-party auth middleware to trust</li>
+          <li><strong class="c-text">Role-based access</strong> — Admin, Manager, and Employee with strict permission boundaries</li>
+          <li><strong class="c-text">Professional output</strong> — PDF payslips that match enterprise HR standards</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// System Architecture</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">REST API Design</h2>
+    </div>
+    <div class="arch-block fade-up d1">
+┌────────────────┐     ┌─────────────────────┐     ┌──────────────┐
+│  Static HTML   │────▶│  C++17 HTTP Server   │────▶│   SQLite DB  │
+│  JS Dashboard  │     │  (cpp-httplib)       │     │  (employees, │
+└────────────────┘     │                     │     │   payroll,   │
+                       │  ┌───────────────┐  │     │   sessions)  │
+                       │  │ BCrypt Auth   │  │     └──────────────┘
+                       │  │ Layer         │  │
+                       │  └───────────────┘  │     ┌──────────────┐
+                       │  ┌───────────────┐  │────▶│ wkhtmltopdf  │
+                       │  │ RBAC Policy   │  │     │ PDF Engine   │
+                       │  │ (3-tier)      │  │     └──────────────┘
+                       │  └───────────────┘  │
+                       └─────────────────────┘
+                        ▲
+                        │ REST API
+                        │ (GET/POST/PUT/DELETE)
+                       ┌┴─────────────────┐
+                       │   CSV Bulk       │
+                       │   Import Engine  │
+                       └──────────────────┘</div>
+  </section>
+
+  <!-- ENGINEERING -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Engineering Deep-Dive</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">Why C++17?</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Raw HTTP Server</p>
+        <p class="c-muted text-sm leading-relaxed mb-3">
+          Using cpp-httplib — a header-only HTTP library — the entire server compiles into a single binary with zero shared library dependencies.
+        </p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>RESTful routing: GET/POST/PUT/DELETE endpoints</li>
+          <li>JSON request/response with nlohmann/json</li>
+          <li>Static file serving for dashboard frontend</li>
+          <li>CORS headers for cross-origin browser access</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">BCrypt + Bearer Auth</p>
+        <p class="c-muted text-sm leading-relaxed mb-3">
+          Military-grade password hashing with BCrypt. Token-based session management using bearer tokens stored server-side.
+        </p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>BCrypt cost factor 12 for password hashing</li>
+          <li>64-char hex token generation for sessions</li>
+          <li>Auto-expiry with configurable TTL</li>
+          <li>Session audit log with IP + timestamp</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">3-Tier RBAC</p>
+        <p class="c-muted text-sm leading-relaxed mb-3">
+          Strict role hierarchy: Admin can manage all; Manager can view team payroll; Employee can only view own payslip.
+        </p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Middleware-level role checking on every endpoint</li>
+          <li>Role escalation prevention (no self-promotion)</li>
+          <li>Admin: full CRUD on employees + payroll + roles</li>
+          <li>Employee: read-only access to own profile + payslips</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">PDF Payslip Engine</p>
+        <p class="c-muted text-sm leading-relaxed mb-3">
+          Generates professional PDF payslips using HTML templates rendered through wkhtmltopdf.
+        </p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>HTML template with dynamic data injection</li>
+          <li>Salary breakdown: basic, HRA, DA, deductions</li>
+          <li>CSV bulk import for batch employee onboarding</li>
+          <li>Payslip archive with download history</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--surface); border-top: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Visual Evidence</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">Screenshots</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/payroll/dashboard.png" alt="Payroll Suite Admin Dashboard" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">Admin Dashboard — Employee Management</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d1" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/payroll/payslip.png" alt="Generated PDF Payslip" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">PDF Payslip — Salary Breakdown Output</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d2" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/payroll/rbac.png" alt="RBAC Permission Matrix" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">3-Tier RBAC — Permission Matrix</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d3" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/payroll/api.png" alt="REST API Testing Interface" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">C++17 REST API — Endpoint Testing</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT NAV -->
+  <div class="project-nav-row">
+    <a href="titan.html" class="project-nav-link">
+      <i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br>
+      <span class="project-nav-title">TITAN-V2 Rover</span>
+    </a>
+    <a href="handsign.html" class="project-nav-link" style="text-align:right;">
+      Next <i class="fas fa-arrow-right" style="font-size:8px;"></i><br>
+      <span class="project-nav-title">Hand Sign Audio</span>
+    </a>
+  </div>
+
+  <script src="../assets/main.js"></script>
+</body>
+</html>

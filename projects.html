@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme',
+        s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering — Bharani KR</title>
+  <meta name="description" content="All engineering projects by Bharani KR — AI/ML, IoT, Systems, and Web. Ranked by technical complexity.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta property="og:title" content="Engineering — Bharani KR">
+  <meta property="og:description" content="10 engineering projects: AI surveillance, IoT rovers, C++ REST APIs, and full-stack platforms.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="page-loader">
+    <div class="loader-logo">B<span>K</span></div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <div id="scroll-progress"></div>
+  <canvas id="circuit-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; opacity: 0.8;"></canvas>
+  <div class="grid-blueprint"></div>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <nav>
+    <a href="index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">Identity</a>
+      <a href="projects.html">Engineering</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">Identity</a>
+    <a href="projects.html">Engineering</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ═══════════════ PAGE HERO ═══════════════ -->
+  <div class="page-hero">
+    <span class="section-label fade-up">// Technical Deployments</span>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d1"
+        style="font-size: clamp(2.5rem, 7vw, 5rem);">
+      Engineering Case Studies
+    </h1>
+    <p class="c-muted mt-4 max-w-xl fade-up d2" style="font-size: 1rem; line-height: 1.7;">
+      10 systems spanning AI vision, IoT firmware, systems programming, and full-stack web — ranked by technical complexity.
+    </p>
+  </div>
+
+  <!-- ═══════════════ FILTER TABS ═══════════════ -->
+  <section style="padding-bottom: 0;">
+    <div class="filter-tabs flex flex-wrap gap-2">
+      <span class="tag clickable filter-tab active" data-filter="all">All</span>
+      <span class="tag clickable filter-tab" data-filter="ai">AI / ML</span>
+      <span class="tag clickable filter-tab" data-filter="iot">IoT / Embedded</span>
+      <span class="tag clickable filter-tab" data-filter="systems">Systems</span>
+      <span class="tag clickable filter-tab" data-filter="web">Web</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ALL PROJECTS ═══════════════ -->
+  <section style="padding-top: 2rem;">
+    <div class="space-y-24">
+
+      <!-- ── 01 · RoadCams ── -->
+      <div class="project-reveal project-card" data-category="ai iot">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">01</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">FLAGSHIP</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">RoadCams — Campus AI Surveillance</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">YOLOv11</span><span class="tag">OpenCV</span>
+              <span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">Leaflet.js</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/roadcams.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Manual campus vehicle monitoring left security gaps — no audit trail, no real-time detection, no spatial camera coverage analysis.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">Live Feed → YOLOv11 ALPR → LCS Geospatial Mapping → PostgreSQL Audit → Flask Web Dashboard</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>Custom-trained YOLOv11 ANPR model on Roboflow dataset</li>
+                  <li>LCS pairwise camera coverage analysis algorithm</li>
+                  <li>Geospatial campus map (Leaflet.js, extracted GPS points)</li>
+                  <li>Snapshot archiving with detection CSV log</li>
+                </ul>
+                <p class="proj-h5">Result</p>
+                <p class="c-text font-bold">95%+ plate detection accuracy. 237KB main.py — largest single-file system in this portfolio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 02 · TITAN-V2 ── -->
+      <div class="project-reveal project-card" data-category="iot systems">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">02</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">FLAGSHIP</span>
+              <span class="tier-badge award">🥈 VIT TetherX 2026</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">TITAN-V2 Agricultural Rover</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">ESP8266</span><span class="tag">MPU-6050</span>
+              <span class="tag">I2C</span><span class="tag">WebSocket</span><span class="tag">C++</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/titan.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Agricultural terrain monitoring requires real-time multi-sensor telemetry with obstacle detection and 6-axis orientation tracking over wireless links.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">ESP8266 FW → I2C MPU-6050 (IMU) + 4× HC-SR04 Ultrasonic → WebSocket → Mission Control Dashboard</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>6-axis IMU orientation &amp; motion tracking</li>
+                  <li>4-sensor ultrasonic proximity array</li>
+                  <li>Real-time telemetry visualization (WebSocket)</li>
+                  <li>Autonomous hazard detection logic in firmware</li>
+                </ul>
+                <p class="proj-h5">Result</p>
+                <p class="c-text font-bold">🥈 2nd Place — VIT TetherX 2026 National IoT Innovation Hackathon.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 03 · Payroll C++ ── -->
+      <div class="project-reveal project-card" data-category="systems">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">03</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">FLAGSHIP</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">Payroll Suite — C++17 REST</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">C++17</span><span class="tag">httplib</span>
+              <span class="tag">SQLite</span><span class="tag">BCrypt</span><span class="tag">PDF Gen</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/payroll.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">A portable payroll engine with zero runtime dependencies, verifiable security, and PDF payslip generation — no Node, no Python, no JVM.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">C++17 HTTP Server (httplib) → BCrypt Auth → SQLite → Static HTML/JS Dashboard → wkhtmltopdf PDF Engine</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>Full REST API in raw C++17, zero frameworks</li>
+                  <li>3-tier RBAC: Admin / Manager / Employee</li>
+                  <li>BCrypt password hashing + bearer token auth</li>
+                  <li>PDF payslip gen + CSV bulk import + session audit</li>
+                </ul>
+                <p class="proj-h5">Why It Stands Out</p>
+                <p class="c-text font-bold">One of the few student projects with a full REST API in systems-level C++17.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 04 · Hand Sign to Audio ── -->
+      <div class="project-reveal project-card" data-category="ai">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">04</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">MAJOR</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">Hand Sign to Audio Translator</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">MediaPipe</span><span class="tag">YOLOv8</span>
+              <span class="tag">gTTS</span><span class="tag">SQLite</span><span class="tag">Tkinter</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/handsign.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">70M+ deaf individuals rely on interpreters for daily communication. A portable, real-time device that converts hand gestures to spoken audio addresses a critical accessibility gap.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">Webcam → MediaPipe Landmark Detection → Custom Gesture DB (SQLite) → gTTS / pyttsx3 → Speaker / Virtual Audio Device</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>10+ named gesture presets + custom sign capture</li>
+                  <li>Dual TTS: gTTS (online) + pyttsx3 (offline fallback)</li>
+                  <li>Audio loopback routing to virtual microphone</li>
+                  <li>Debounced gesture detection, custom SQLite template DB</li>
+                </ul>
+                <p class="proj-h5">Result</p>
+                <p class="c-text font-bold">Real-time ISL/ASL recognition with 26KB app.py — accessibility-focused AI.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 05 · TruFleet ── -->
+      <div class="project-reveal project-card" data-category="web">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">05</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">MAJOR</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">TruFleet — Vehicle Auth Platform</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">React 18</span><span class="tag">Node.js</span>
+              <span class="tag">Supabase</span><span class="tag">PostgreSQL RLS</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/trufleet.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Connected vehicle platforms needed a digital gatekeeper ensuring only legally compliant, insured commercial vehicles can operate.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">React + Vite Frontend → Express REST API (JWT middleware) → Supabase PostgreSQL (RLS policies) + Auth</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>5-step authorization chain (existence → status → insurance)</li>
+                  <li>Row Level Security in PostgreSQL</li>
+                  <li>Admin / Captain RBAC with JWT middleware</li>
+                  <li>Full audit log on every authorization attempt</li>
+                </ul>
+                <p class="proj-h5">Result</p>
+                <p class="c-text font-bold">Production-quality SaaS architecture with complete API documentation (15 endpoints).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 06 · Online Compiler ── -->
+      <div class="project-reveal project-card" data-category="web systems">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">06</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">MAJOR</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">Online Compiler — Cloud Sandbox</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">Flask</span><span class="tag">WebSocket</span>
+              <span class="tag">Node.js</span><span class="tag">Security Sandbox</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/compiler.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Online code execution platforms lack real-time output streaming, proper sandboxing, and admin-side session observability.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">Flask Backend → Secure Executor → WebSocket Event Stream → Admin Live Monitor → Phase-Based Execution Model</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>Multi-language code execution with sandboxing</li>
+                  <li>Live output streaming over WebSocket</li>
+                  <li>Admin dashboard with live session monitoring</li>
+                  <li>Rate limiting, security layer, phase-based events</li>
+                </ul>
+                <p class="proj-h5">Scale</p>
+                <p class="c-text font-bold">87KB Flask app with 34 source files and comprehensive test suite.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 07 · Simple-ERP (SIH) ── -->
+      <div class="project-reveal project-card" data-category="web">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">07</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">MAJOR</span>
+              <span class="tier-badge award">SIH Entry</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">Student ERP — SIH Platform</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">Flask</span><span class="tag">PostgreSQL</span>
+              <span class="tag">SQLAlchemy</span><span class="tag">ReportLab</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/erp.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Universities lack integrated digital systems covering student applications, hostel allocation, fee management, and exam records under a single platform.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">Flask + SQLAlchemy → PostgreSQL → Jinja2 Templates → ReportLab PDF → Role-Based Dashboards</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Engineering</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>3-tier RBAC: Student / Staff / Admin</li>
+                  <li>Hostel allocation and occupancy management</li>
+                  <li>Fee payment tracking + PDF receipt generation</li>
+                  <li>Multi-module reporting (course, hostel, payments)</li>
+                </ul>
+                <p class="proj-h5">Scale</p>
+                <p class="c-text font-bold">181KB app.py — Smart India Hackathon submission with production-grade feature coverage.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 08 · Inventory Management ── -->
+      <div class="project-reveal project-card" data-category="web">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">08</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">FEATURED</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">Inventory Management System</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">Next.js</span><span class="tag">PostgreSQL</span>
+              <span class="tag">Prisma ORM</span><span class="tag">Vercel</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/inventory.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01/Inventory-Management" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+              <a href="https://inventory-management-eight-dusky.vercel.app/" target="_blank" class="btn-outline">
+                Live Demo <i class="fas fa-external-link-alt" style="font-size:8px;"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">SMEs lacked real-time visibility into stock transitions, leading to inventory discrepancies and operational bottlenecks.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">React Frontend → Node.js Express → Prisma ORM → PostgreSQL — deployed on Vercel</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Features</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>Dynamic stock sync with analytics dashboard</li>
+                  <li>Secure authentication system</li>
+                  <li>Real-time inventory updates</li>
+                </ul>
+                <p class="proj-h5">Result</p>
+                <p class="c-text font-bold">Live on Vercel with zero-latency synchronization.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 09 · AttendPro ── -->
+      <div class="project-reveal project-card" data-category="web">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">09</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">FEATURED</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">AttendPro — Anti-Proxy System</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">MERN Stack</span><span class="tag">Automation</span>
+              <span class="tag">MongoDB</span><span class="tag">Render</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/attendpro.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01/AttendPro" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+              <a href="https://attendpro-2uf0.onrender.com/" target="_blank" class="btn-outline">
+                Live Demo <i class="fas fa-external-link-alt" style="font-size:8px;"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Manual attendance systems are vulnerable to proxies and produce unreliable reports — no audit trail, no automated enforcement.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">MERN Stack with institution-specific anti-proxy logic and automated report generation</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Features</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>Faculty report generation automation</li>
+                  <li>Anti-proxy detection protocols</li>
+                  <li>CSV export engine for records</li>
+                </ul>
+                <p class="proj-h5">Result</p>
+                <p class="c-text font-bold">Handles concurrent data requests for 500+ users. Live on Render.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 10 · Volunteer Connect ── -->
+      <div class="project-reveal project-card" data-category="web">
+        <div class="blueprint-line mb-8"></div>
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-4">
+            <p class="c-subtle heading-font font-bold mb-2" style="font-size:3rem; line-height:1; opacity:0.15;">10</p>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <span class="tier-badge">FEATURED</span>
+            </div>
+            <h3 class="heading-font font-bold mb-4 c-text" style="font-size: 1.65rem;">Volunteer Connect Platform</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag">Node.js</span><span class="tag">Express</span>
+              <span class="tag">MongoDB</span><span class="tag">EJS</span>
+            </div>
+            <div class="flex flex-col gap-3">
+              <a href="project/volunteer.html" class="btn-primary">
+                Full Case Study <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+              </a>
+              <a href="https://github.com/bharani-01" target="_blank" class="btn-outline">
+                GitHub <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-8 case-right">
+            <div class="grid md:grid-cols-2 gap-8 text-sm">
+              <div>
+                <p class="proj-h5">Problem</p>
+                <p class="c-muted mb-4">Volunteer organizations and volunteers lacked a unified platform for opportunity discovery, application management, and communication.</p>
+                <p class="proj-h5">Architecture</p>
+                <p class="c-muted">Express MVC → MongoDB (mongoose) → bcryptjs Auth → EJS views → Session management with MongoDB store</p>
+              </div>
+              <div>
+                <p class="proj-h5">Key Features</p>
+                <ul class="c-muted list-disc ml-4 space-y-1 mb-4">
+                  <li>Dual-role: Volunteer &amp; Organization accounts</li>
+                  <li>Application system with approve/reject workflow</li>
+                  <li>Messaging system between roles</li>
+                  <li>Reviews &amp; ratings per volunteer</li>
+                </ul>
+                <p class="proj-h5">Architecture Quality</p>
+                <p class="c-text font-bold">Clean MVC structure: controllers / models / routes / middleware / views.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <div class="cta-dark">
+    <h2 class="heading-font font-bold tracking-tighter fade-up mb-6"
+        style="font-size: clamp(2rem, 5vw, 3.5rem);">
+      Interested in working together?
+    </h2>
+    <a href="contact.html" class="cta-btn-solid fade-up d2">
+      Contact Me <i class="fas fa-arrow-right" style="font-size:9px;"></i>
+    </a>
+    <p class="cta-sub" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
+      Bharani KR // B.Tech Cyber Security &amp; IoT // SRET, Chennai — 2026
+    </p>
+  </div>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

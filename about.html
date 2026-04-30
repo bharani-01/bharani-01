@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme',
+        s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identity — Bharani KR</title>
+  <meta name="description" content="About Bharani KR — B.Tech Cyber Security & IoT student at SRET Chennai. Skills, education, engineering timeline, and awards.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <meta property="og:title" content="Identity — Bharani KR">
+  <meta property="og:description" content="B.Tech Cyber Security & IoT at SRET Chennai. Skills matrix, engineering timeline, and awards.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div class="page-loader" id="page-loader">
+    <div class="loader-logo">B<span>K</span></div>
+    <div class="loader-bar"></div>
+  </div>
+
+  <div id="scroll-progress"></div>
+  <canvas id="circuit-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none; opacity: 0.8;"></canvas>
+  <div class="grid-blueprint"></div>
+
+  <!-- ═══════════════ NAVIGATION ═══════════════ -->
+  <nav>
+    <a href="index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">Identity</a>
+      <a href="projects.html">Engineering</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">Identity</a>
+    <a href="projects.html">Engineering</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- ═══════════════ PAGE HERO ═══════════════ -->
+  <div class="page-hero">
+    <span class="section-label fade-up">// Identity Profile</span>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d1"
+        style="font-size: clamp(2.5rem, 7vw, 5rem);">
+      Hardware, Software, Intelligence.
+    </h1>
+    <p class="c-muted mt-4 max-w-2xl fade-up d2" style="font-size: 1.1rem; line-height: 1.7;">
+      I build end-to-end intelligent systems — from ESP8266 firmware and sensor fusion to
+      C++17 REST services, computer vision pipelines, and full-stack web platforms.
+    </p>
+
+    <!-- Internship Availability Badge -->
+    <div class="mt-4 fade-up d3">
+      <span class="badge-available" style="display:inline-flex; align-items:center; gap:0.5rem;">
+        <span class="badge-dot"></span>
+        Open for Summer 2026 Internships — Embedded Systems / AI-ML / IoT
+      </span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ PROFILE PHOTO + BIO ═══════════════ -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-4 fade-up">
+        <!--
+          📸 HEADSHOT INSTRUCTIONS FOR BHARANI:
+          1. Take a photo with clean background + good lighting
+          2. Crop to a square (at least 400×400px)
+          3. Save it as "assets/headshot.jpg"
+          4. Uncomment the <img> tag below and delete the placeholder div
+        -->
+        <!-- <img src="assets/headshot.jpg" alt="Bharani KR" style="width:100%; max-width:280px; border-radius:4px; border: 2px solid var(--border); display:block; margin:0 auto;"> -->
+        <div style="width:100%; max-width:280px; aspect-ratio:1; background:var(--surface); border:2px dashed var(--border); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.5rem; margin:0 auto; border-radius:4px;">
+          <i class="fas fa-camera c-subtle" style="font-size:2rem;"></i>
+          <span class="c-subtle" style="font-family:'Space Grotesk',sans-serif; font-size:10px; letter-spacing:0.1em; text-transform:uppercase;">Your Photo Here</span>
+        </div>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <span class="section-label">// Who I Am</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+          Beyond the Code
+        </h2>
+        <p class="c-muted mt-4 leading-relaxed">
+          I'm a B.Tech Cyber Security & IoT student at SRET Chennai who genuinely believes that the most exciting engineering happens at the intersection of hardware and intelligence. I didn't start in AI or embedded — I started by breaking things apart, figuring out how they worked, and putting them back together better.
+        </p>
+        <p class="c-muted mt-3 leading-relaxed">
+          That curiosity led me from basic web projects to building autonomous rovers with real-time telemetry, training custom YOLO models for campus surveillance, and writing production REST APIs in raw C++17. Every project in this portfolio started with a real problem I wanted to solve — not a tutorial I wanted to follow.
+        </p>
+        <p class="c-muted mt-3 leading-relaxed">
+          When I'm not coding, you'll find me experimenting with ESP32-CAMs, reading about edge AI deployment, or debugging I2C buses at 2 AM because the MPU-6050 decided to stop responding.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EDUCATION ═══════════════ -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Education</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+          Academic Foundation
+        </h2>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <div class="edu-card mb-6">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+            <div>
+              <p class="proj-h5" style="margin-bottom:0.3rem;">Current Institution</p>
+              <h3 class="heading-font font-bold c-text" style="font-size: 1.25rem; line-height: 1.3;">
+                Sri Ramachandra Faculty of Engineering and Technology
+              </h3>
+              <p class="c-muted text-sm mt-1">SRET — Porur, Chennai, Tamil Nadu</p>
+            </div>
+            <span class="tag">Active</span>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+            <div>
+              <p class="proj-h5">Degree</p>
+              <p class="c-muted text-sm">B.Tech</p>
+            </div>
+            <div>
+              <p class="proj-h5">Specialisation</p>
+              <p class="c-muted text-sm">Cyber Security &amp; IoT</p>
+            </div>
+            <div>
+              <p class="proj-h5">Status</p>
+              <p class="c-muted text-sm">Currently Enrolled</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="surface-card p-5 fade-up d2">
+          <p class="proj-h5 mb-3">Relevant Coursework</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Network Security</span>
+            <span class="tag">Embedded Systems</span>
+            <span class="tag">Data Structures &amp; Algorithms</span>
+            <span class="tag">IoT Protocols</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Database Systems</span>
+            <span class="tag">Operating Systems</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS MATRIX ═══════════════ -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="mb-12 fade-up">
+      <span class="section-label">// Technical Competencies</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2.5rem;">
+        Skills Matrix
+      </h2>
+    </div>
+
+    <div class="skills-section grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+      <!-- AI / Machine Learning -->
+      <div class="fade-up">
+        <p class="proj-h5 mb-5" style="letter-spacing:.2em;">AI / Machine Learning</p>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">YOLOv8/11 — Computer Vision</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">MediaPipe — Gesture Tracking</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">OpenCV — Image Processing</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">scikit-learn — ML Models</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="75%"></div></div>
+        </div>
+      </div>
+
+      <!-- Systems & Embedded -->
+      <div class="fade-up d1">
+        <p class="proj-h5 mb-5" style="letter-spacing:.2em;">Systems &amp; Embedded</p>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">ESP8266/ESP32 — Firmware</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">C++17 — Systems Programming</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">SQLite / REST APIs</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">I2C / SPI Protocols</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="75%"></div></div>
+        </div>
+      </div>
+
+      <!-- Web Backend -->
+      <div class="fade-up d2">
+        <p class="proj-h5 mb-5" style="letter-spacing:.2em;">Web Backend</p>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Python / Flask</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Node.js / Express</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">PostgreSQL / Supabase</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">WebSocket / Real-Time</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+        </div>
+      </div>
+
+      <!-- Web Frontend -->
+      <div class="fade-up d1">
+        <p class="proj-h5 mb-5" style="letter-spacing:.2em;">Web Frontend</p>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">HTML / CSS / JavaScript</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">React / Next.js</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="75%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Vite / Modern Tooling</span><span class="skill-pct">70%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="70%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Tailwind CSS</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+        </div>
+      </div>
+
+      <!-- IoT & Security -->
+      <div class="fade-up d2">
+        <p class="proj-h5 mb-5" style="letter-spacing:.2em;">IoT &amp; Cyber Security</p>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Sensor Integration</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Network Security Concepts</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="75%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">MQTT / IoT Protocols</span><span class="skill-pct">70%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="70%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Auth / RBAC / BCrypt</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+        </div>
+      </div>
+
+      <!-- Tools & DevOps -->
+      <div class="fade-up d3">
+        <p class="proj-h5 mb-5" style="letter-spacing:.2em;">Tools &amp; DevOps</p>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Git / GitHub</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Vercel / Render Deploy</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">Linux / CLI</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="75%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-info"><span class="skill-name">System Architecture Design</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ ENGINEERING TIMELINE ═══════════════ -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Engineering History</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+          Project Timeline
+        </h2>
+        <p class="c-muted mt-3 text-sm leading-relaxed">
+          A chronological record of systems built, problems solved, and technologies mastered.
+        </p>
+      </div>
+
+      <div class="md:col-span-8 fade-up d1">
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <p class="tl-date">2026 — Current</p>
+            <p class="tl-title">🥈 TITAN-V2 Rover — VIT TetherX 2026</p>
+            <p class="tl-desc">Multi-sensor agricultural rover: ESP8266 firmware, MPU-6050 IMU, 4-sensor ultrasonic proximity array, real-time WebSocket mission control. 2nd place at national IoT hackathon.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="tl-date">2026</p>
+            <p class="tl-title">Payroll Suite — C++17 REST Service</p>
+            <p class="tl-desc">Production-grade REST API written in raw C++17. No frameworks. BCrypt auth, 3-tier RBAC, SQLite persistence, PDF payslip generation, CSV bulk import.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="tl-date">2025</p>
+            <p class="tl-title">RoadCams — Campus AI Surveillance</p>
+            <p class="tl-desc">Custom YOLOv11 ANPR model, LCS geospatial camera mapping, PostgreSQL audit logging, live Flask web dashboard. 95%+ plate detection in deployment.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="tl-date">2025</p>
+            <p class="tl-title">Online Compiler — Cloud Code Sandbox</p>
+            <p class="tl-desc">Multi-language code execution with WebSocket live streaming, admin session monitoring, security sandboxing, and rate limiting. 87KB Flask codebase.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="tl-date">2025</p>
+            <p class="tl-title">Simple-ERP — SIH Smart India Hackathon</p>
+            <p class="tl-desc">Student ERP system with 3-tier RBAC (Student/Staff/Admin), hostel management, fee payment tracking, PDF receipts via ReportLab. Built for SIH entry.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="tl-date">2025</p>
+            <p class="tl-title">Hand Sign to Audio — ISL Translator</p>
+            <p class="tl-desc">Real-time sign language recognition, custom gesture SQLite DB, dual TTS pipeline (gTTS + pyttsx3 offline fallback), virtual audio loopback routing.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="tl-date">2025</p>
+            <p class="tl-title">TruFleet — Vehicle Authorization Platform</p>
+            <p class="tl-desc">React + Node.js + Supabase SaaS. Full RBAC with JWT, 5-step authorization chain, Row Level Security in PostgreSQL, complete audit trail.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="tl-date">2024</p>
+            <p class="tl-title">AttendPro — Anti-Proxy Attendance System</p>
+            <p class="tl-desc">MERN stack attendance platform. Anti-proxy protocols, faculty report generation, CSV export engine. Handles 500+ concurrent users on Render.</p>
+          </div>
+
+          <div class="timeline-item">
+            <p class="tl-date">2024</p>
+            <p class="tl-title">Inventory Management — Full-Stack Web App</p>
+            <p class="tl-desc">Next.js + PostgreSQL + Prisma ORM. Dynamic stock sync, analytics dashboard, secure auth. Live on Vercel.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ WHAT I'M LEARNING ═══════════════ -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Growth Mindset</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+          Currently Exploring
+        </h2>
+        <p class="c-muted mt-3 text-sm leading-relaxed">
+          What I'm actively learning and integrating into my engineering workflow.
+        </p>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <div class="surface-card p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fas fa-microchip c-primary" style="font-size: 1.25rem;"></i>
+              <h3 class="heading-font font-bold c-text" style="font-size: 1rem;">Edge AI Deployment</h3>
+            </div>
+            <p class="c-muted text-sm leading-relaxed">
+              Running optimized ML models directly on ESP32-CAM and Raspberry Pi — TFLite Micro, ONNX Runtime, and INT8 quantization for real-time inference at the edge.
+            </p>
+          </div>
+
+          <div class="surface-card p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fab fa-docker c-primary" style="font-size: 1.25rem;"></i>
+              <h3 class="heading-font font-bold c-text" style="font-size: 1rem;">Docker & Containerization</h3>
+            </div>
+            <p class="c-muted text-sm leading-relaxed">
+              Containerizing full-stack deployments — multi-stage builds, Docker Compose orchestration, and CI/CD pipelines for reproducible environments.
+            </p>
+          </div>
+
+          <div class="surface-card p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fab fa-rust c-primary" style="font-size: 1.25rem;"></i>
+              <h3 class="heading-font font-bold c-text" style="font-size: 1rem;">Rust for Embedded</h3>
+            </div>
+            <p class="c-muted text-sm leading-relaxed">
+              Memory-safe systems programming — exploring Rust for firmware development, replacing C++ in safety-critical IoT applications.
+            </p>
+          </div>
+
+          <div class="surface-card p-5">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fas fa-shield-alt c-primary" style="font-size: 1.25rem;"></i>
+              <h3 class="heading-font font-bold c-text" style="font-size: 1rem;">Offensive Security</h3>
+            </div>
+            <p class="c-muted text-sm leading-relaxed">
+              Penetration testing methodologies, IoT device exploitation, and secure firmware development practices for production systems.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ AWARDS ═══════════════ -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border);">
+    <div class="grid md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Recognition</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">
+          Awards &amp; Honours
+        </h2>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <div class="surface-card p-6">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <span class="tier-badge award" style="font-size: 1rem; padding: 0.4rem 0.8rem;">🥈 SILVER</span>
+            <span class="tag">National Hackathon</span>
+          </div>
+          <h3 class="heading-font font-bold c-text mb-2" style="font-size: 1.5rem;">VIT TetherX 2026</h3>
+          <p class="c-muted text-sm leading-relaxed mb-4">
+            Placed 2nd at VIT TetherX 2026 — a national-level IoT innovation hackathon hosted by VIT University.
+            Competed with the TITAN-V2 agricultural rover system featuring multi-sensor telemetry and
+            real-time mission control.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">ESP8266</span>
+            <span class="tag">IMU Telemetry</span>
+            <span class="tag">WebSocket</span>
+            <span class="tag">Agricultural IoT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <div class="cta-dark">
+    <h2 class="heading-font font-bold tracking-tighter fade-up mb-6"
+        style="font-size: clamp(2rem, 5vw, 3.5rem);">
+      Ready to collaborate?<br>
+      <span style="color:var(--primary);">Let's connect.</span>
+    </h2>
+    <div class="flex flex-wrap justify-center gap-4 fade-up d2">
+      <a href="contact.html" class="cta-btn-solid">
+        Contact Me
+      </a>
+      <a href="projects.html" class="cta-btn-ghost">
+        View All Projects
+      </a>
+    </div>
+    <p class="cta-sub" style="margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.08);">
+      Bharani KR // B.Tech Cyber Security &amp; IoT // SRET, Chennai — 2026
+    </p>
+  </div>
+
+  <script src="assets/main.js"></script>
+</body>
+</html>

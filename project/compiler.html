@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const s=localStorage.getItem('bk-portfolio-theme');const d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s==='dark'||(!s&&d)?'dark':'light');}catch(e){}</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Compiler — Cloud Sandbox | Bharani KR</title>
+  <meta name="description" content="Multi-language cloud compiler with admin monitoring dashboard, regex-based harmful code detection, and real-time WebSocket output streaming.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-loader" id="page-loader"><div class="loader-logo">B<span>K</span></div><div class="loader-bar"></div></div>
+  <div id="scroll-progress"></div><div class="grid-blueprint"></div>
+  <nav><a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div><div class="nav-actions"><button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button><button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button></div></nav>
+  <div class="mobile-nav" id="mobile-nav"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div>
+
+  <!-- HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.5rem;"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects</a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1"><span class="tier-badge">MAJOR</span><span class="tag">06 / 10</span></div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2" style="font-size: clamp(2.5rem, 7vw, 4.5rem);">Online Compiler</h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">Multi-language cloud code execution sandbox with admin monitoring dashboard, regex-based security scanning, and real-time WebSocket output streaming.</p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">Flask</span><span class="tag">WebSocket</span><span class="tag">Node.js</span><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Regex</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5"><a href="https://github.com/bharani-01" target="_blank" class="btn-primary">View Source <i class="fab fa-github"></i></a></div>
+    <div class="flex flex-wrap gap-4 mt-4 fade-up d5" style="font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--text-subtle);"><span><i class="fas fa-user" style="margin-right:4px;"></i> Solo Project</span></div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background:var(--surface);border-bottom:1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up"><div class="detail-metric-number">10+</div><div class="detail-metric-label">Languages Supported</div></div>
+      <div class="detail-metric fade-up d1"><div class="detail-metric-number">Real-time</div><div class="detail-metric-label">WebSocket Streaming</div></div>
+      <div class="detail-metric fade-up d2"><div class="detail-metric-number">Admin</div><div class="detail-metric-label">Monitoring Dashboard</div></div>
+      <div class="detail-metric fade-up d3"><div class="detail-metric-number">Regex</div><div class="detail-metric-label">Security Scanning</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up"><span class="section-label">// Problem Statement</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">The Challenge</h2></div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Existing online compilers batch-process code and return output only after completion. They lack real-time streaming, admin observability, and security isolation for educational environments.</p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">No real-time output</strong> — users wait for full execution before seeing any output</li>
+          <li><strong class="c-text">No admin monitoring</strong> — no way to see what code is being executed across the platform</li>
+          <li><strong class="c-text">Security risk</strong> — users can run harmful system commands (rm -rf, fork bombs, network access)</li>
+          <li><strong class="c-text">No system usage visibility</strong> — no CPU/memory monitoring for resource-heavy executions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// My Approach</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Engineering Thinking</h2></div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Built a <strong class="c-text">two-application system</strong>: the compiler frontend/backend for code execution, and a separate <strong class="c-text">admin dashboard</strong> for monitoring all executions, system resources, and security alerts.</p>
+        <p class="c-muted leading-relaxed mb-4">The security layer uses <strong class="c-text">regex pattern matching</strong> to detect harmful code patterns before execution — system calls, filesystem operations, network access, and infinite loop patterns. Flagged code is blocked and logged for admin review.</p>
+        <p class="c-muted leading-relaxed">Supports all text-based languages (Python, C, C++, Java, Go, Rust, etc.) and HTML/CSS/JS for web preview. UI-based frameworks like Flutter, Swift, React are excluded since they need build toolchains beyond simple compilation.</p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen"><div class="approach-tag chosen">CHOSEN</div><p class="c-text text-sm font-semibold mb-1">Separate admin dashboard + compiler</p><p class="c-muted text-sm leading-relaxed">Decoupled monitoring from execution. Admin sees all sessions, resource usage, and security flags in real-time.</p></div>
+        <div class="approach-chosen"><div class="approach-tag chosen">CHOSEN</div><p class="c-text text-sm font-semibold mb-1">Regex pre-execution security scan</p><p class="c-muted text-sm leading-relaxed">Pattern-match dangerous code before it runs. Block system calls, fork bombs, and network access attempts.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVE -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Technical Deep-Dive</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Key Systems</h2></div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Multi-Language Execution Engine</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>10+ languages: Python, C, C++, Java, Go, Rust, JS, etc.</li>
+          <li>HTML/CSS/JS web preview with sandboxed iframe</li>
+          <li>Phase-based execution: Init → Compile → Execute → Done</li>
+          <li>Memory/timeout limits per execution session</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Admin Monitoring Dashboard</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Real-time view of all active execution sessions</li>
+          <li>CPU and RAM usage monitoring per process</li>
+          <li>Security alert feed with flagged code snippets</li>
+          <li>Force-terminate capability for runaway processes</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Regex Security Scanner</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Pre-execution pattern matching for dangerous code</li>
+          <li>Detects: system(), exec(), rm, fork bombs, network calls</li>
+          <li>Flagged code blocked + logged for admin review</li>
+          <li>Language-specific rule sets for each supported language</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">WebSocket Streaming</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Persistent WebSocket per session</li>
+          <li>stdout/stderr streamed line-by-line in real-time</li>
+          <li>Execution phase updates pushed to frontend</li>
+          <li>Admin dashboard receives all streams simultaneously</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Challenges & Failures</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What Broke & What I Learned</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div>
+        <div class="challenge-title">Regex Can't Catch Everything</div>
+        <div class="challenge-body">Regex-based security scanning catches known patterns, but <strong>obfuscated code can bypass it</strong> — base64 encoded system calls, dynamic imports, and eval() chains. Had to layer regex with process-level sandboxing (restricted filesystem + network) for defense in depth.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Static analysis is necessary but not sufficient. Always combine with runtime isolation for true security.</div>
+      </div>
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div>
+        <div class="challenge-title">WebSocket Scaling with Concurrent Users</div>
+        <div class="challenge-body">Each code execution opens a persistent WebSocket connection. <strong>With multiple concurrent users, the server had to manage dozens of streams simultaneously</strong> while keeping admin dashboard updated in real-time. Required careful connection pooling and message routing.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: WebSocket servers need explicit connection lifecycle management. Unlike HTTP, connections persist and consume resources continuously.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Results & Impact</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What It Achieved</h2></div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up"><div class="result-label">Outcome</div><div class="result-title">10+ Language Support</div><div class="result-desc">Full compilation and execution for all major text-based programming languages plus HTML/CSS/JS web preview.</div></div>
+      <div class="result-card fade-up d1"><div class="result-label">Outcome</div><div class="result-title">Dual Application Architecture</div><div class="result-desc">Separate admin monitoring dashboard with real-time visibility into all code executions, system resources, and security alerts.</div></div>
+      <div class="result-card fade-up d2"><div class="result-label">Outcome</div><div class="result-title">Security-First Design</div><div class="result-desc">Multi-layer security: regex pre-scan + sandboxed execution + resource limits + admin force-terminate.</div></div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Demo & Evidence</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Screenshots</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden;border:1px solid var(--border);"><img src="../assets/images/compiler/editor.png" alt="Online compiler code editor" style="width:100%;display:block;" loading="lazy">
+        <div style="padding:0.75rem 1rem;background:var(--surface-alt);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Code Editor — Multi-Language Execution</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div></div>
+      <div class="fade-up d1" style="overflow:hidden;border:1px solid var(--border);"><img src="../assets/images/compiler/admin.png" alt="Admin monitoring dashboard" style="width:100%;display:block;" loading="lazy">
+        <div style="padding:0.75rem 1rem;background:var(--surface-alt);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Admin Dashboard — Execution Monitoring & Security Alerts</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div></div>
+    </div>
+  </section>
+
+  <div class="project-nav-row">
+    <a href="trufleet.html" class="project-nav-link"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br><span class="project-nav-title">TruFleet</span></a>
+    <a href="erp.html" class="project-nav-link" style="text-align:right;">Next <i class="fas fa-arrow-right" style="font-size:8px;"></i><br><span class="project-nav-title">Student ERP</span></a>
+  </div>
+  <script src="../assets/main.js"></script>
+</body>
+</html>

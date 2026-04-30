@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>try{const s=localStorage.getItem('bk-portfolio-theme');const d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',s==='dark'||(!s&&d)?'dark':'light');}catch(e){}</script>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management — Full-Stack | Bharani KR</title>
+  <meta name="description" content="Enterprise inventory management with e-commerce integration, live counter billing, advanced audit logging, staff tracking, label printing, and scheduled email reports.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-loader" id="page-loader"><div class="loader-logo">B<span>K</span></div><div class="loader-bar"></div></div>
+  <div id="scroll-progress"></div><div class="grid-blueprint"></div>
+  <nav><a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a><div class="nav-links"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div><div class="nav-actions"><button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button><button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button></div></nav>
+  <div class="mobile-nav" id="mobile-nav"><a href="../index.html">Home</a><a href="../about.html">Identity</a><a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a></div>
+
+  <!-- HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1.5rem;"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects</a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1"><span class="tier-badge">FEATURED</span><span class="tag">08 / 10</span></div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2" style="font-size: clamp(2.5rem, 7vw, 4.5rem);">Inventory Management</h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">Enterprise-grade inventory system with e-commerce integration, live counter billing, advanced audit logging, staff performance tracking, and SKU label printing.</p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Prisma</span><span class="tag">Vercel</span><span class="tag">React</span><span class="tag">Node.js</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5">
+      <a href="https://inventory-management-2mz5.onrender.com/" target="_blank" class="btn-primary">Live Demo <i class="fas fa-external-link-alt"></i></a>
+      <a href="https://github.com/bharani-01" target="_blank" class="btn-primary" style="background:transparent;border:1px solid var(--border);color:var(--text);">View Source <i class="fab fa-github"></i></a>
+    </div>
+    <!-- Demo Credentials -->
+    <div class="fade-up d5" style="margin-top:1.25rem; padding:1rem 1.25rem; border:1px solid var(--border); background:var(--surface-alt); max-width:420px;">
+      <p style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--primary); margin-bottom:0.6rem;">
+        <i class="fas fa-key" style="margin-right:4px;"></i> Demo Credentials
+      </p>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5rem;">
+        <div style="padding:0.5rem; border:1px solid var(--border); text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-subtle); margin-bottom:3px;">Admin</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text);">admin</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">admin123</div>
+        </div>
+        <div style="padding:0.5rem; border:1px solid var(--border); text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-subtle); margin-bottom:3px;">Manager</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text);">manager</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">manager123</div>
+        </div>
+        <div style="padding:0.5rem; border:1px solid var(--border); text-align:center;">
+          <div style="font-family:'Space Grotesk',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-subtle); margin-bottom:3px;">Staff</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text);">staff</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-muted);">staff123</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-4 fade-up d5" style="font-family:'Space Grotesk',sans-serif;font-size:11px;color:var(--text-subtle);"><span><i class="fas fa-user" style="margin-right:4px;"></i> Solo Project</span></div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background:var(--surface);border-bottom:1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up"><div class="detail-metric-number">Live</div><div class="detail-metric-label">E-Commerce Sync</div></div>
+      <div class="detail-metric fade-up d1"><div class="detail-metric-number">Real-time</div><div class="detail-metric-label">Counter Billing</div></div>
+      <div class="detail-metric fade-up d2"><div class="detail-metric-number">Advanced</div><div class="detail-metric-label">Audit Logging</div></div>
+      <div class="detail-metric fade-up d3"><div class="detail-metric-number">SKU</div><div class="detail-metric-label">Label Printing</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up"><span class="section-label">// Problem Statement</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">The Challenge</h2></div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">SMEs struggle with disconnected inventory and sales systems. Stock isn't synced with e-commerce listings, expired products stay listed, staff activity is untracked, and there's no audit trail for who accessed what and when.</p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">No inventory-to-storefront sync</strong> — out-of-stock or expired items still show on the e-commerce website</li>
+          <li><strong class="c-text">No audit trail</strong> — no logging of IP, timestamps, accessed routes, or suspicious activity</li>
+          <li><strong class="c-text">No staff tracking</strong> — no visibility into work hours, sales-per-staff, or performance metrics</li>
+          <li><strong class="c-text">No automated alerts</strong> — minimum stock levels, expiry dates, and suspicious access go unnoticed</li>
+          <li><strong class="c-text">Manual label printing</strong> — product labels with SKU codes created manually for each item</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// My Approach</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Engineering Thinking</h2></div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">Designed as an <strong class="c-text">all-in-one platform</strong> where inventory is the single source of truth. The e-commerce storefront only displays products that are in-stock, non-expired, and approved in the inventory system — no manual sync needed.</p>
+        <p class="c-muted leading-relaxed mb-4">The audit system logs <strong class="c-text">every API call</strong> with IP address, timestamp, accessed route, and user session details. Rate limiting prevents abuse. If the same IP shows unusual patterns (rapid requests, accessing restricted routes), alerts trigger automatically.</p>
+        <p class="c-muted leading-relaxed">Scheduled email reports compile daily/weekly summaries — stock levels, sales performance, staff hours, and alert history — and send them to the admin at configured times without any manual action.</p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen"><div class="approach-tag chosen">CHOSEN</div><p class="c-text text-sm font-semibold mb-1">Inventory as single source of truth</p><p class="c-muted text-sm leading-relaxed">E-commerce auto-syncs from inventory. Expired/out-of-stock items automatically hidden from storefront.</p></div>
+        <div class="approach-chosen"><div class="approach-tag chosen">CHOSEN</div><p class="c-text text-sm font-semibold mb-1">Defense-in-depth audit system</p><p class="c-muted text-sm leading-relaxed">Every request logged with IP + timestamp + route. Rate limiting + anomaly detection + scheduled email reports.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVE -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Feature Breakdown</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Key Modules</h2></div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">E-Commerce Integration</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Only approved, in-stock products displayed on storefront</li>
+          <li>Expiry tracking — auto-hide expired items</li>
+          <li>Real-time stock counter synced with inventory DB</li>
+          <li>Minimum stock level checking + auto-order page</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Live Counter Billing</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Real-time POS billing at physical counter</li>
+          <li>Instant stock deduction on sale</li>
+          <li>Receipt generation with itemized breakdown</li>
+          <li>Staff-wise sales tracking per billing session</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Advanced Audit Logging</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Every API call logged: IP, timestamp, route, user</li>
+          <li>Rate limiting on all endpoints</li>
+          <li>Anomaly detection: unusual patterns trigger alerts</li>
+          <li>Same-IP login tracking across sessions</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">Staff & Reports</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Staff work-time tracking with clock in/out</li>
+          <li>Staff-wise sales and performance metrics</li>
+          <li>Scheduled email reports (daily/weekly summaries)</li>
+          <li>SKU label printing — customizable per product</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Challenges</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What Broke & What I Learned</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div><div class="challenge-title">Real-Time Stock Sync Across Systems</div>
+        <div class="challenge-body">Keeping inventory counts consistent between <strong>counter billing, e-commerce orders, and admin adjustments</strong> simultaneously was error-prone. Race conditions caused stock going negative. Fixed with database-level atomic transactions and optimistic locking.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Multi-source inventory updates need transactional integrity. Application-level checks aren't enough — use DB-level constraints.</div>
+      </div>
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div><div class="challenge-title">Audit Log Volume Explosion</div>
+        <div class="challenge-body">Logging every API call with full context <strong>generated massive data volumes</strong>. The audit log table grew faster than any other table. Had to implement log rotation, archival policies, and indexed queries to keep the system responsive.</div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Comprehensive logging is expensive. Design retention policies from day one, not after the database slows down.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <div class="mb-8 fade-up"><span class="section-label">// Results</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">What It Achieved</h2></div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up"><div class="result-label">Outcome</div><div class="result-title">Full Retail Stack</div><div class="result-desc">Inventory + e-commerce + billing + staff tracking + audit logging in one unified platform. Single source of truth.</div></div>
+      <div class="result-card fade-up d1"><div class="result-label">Outcome</div><div class="result-title">Security-First Audit System</div><div class="result-desc">Every access logged with IP, timestamp, route, and user. Rate limiting + anomaly alerts + scheduled email reports.</div></div>
+      <div class="result-card fade-up d2"><div class="result-label">Outcome</div><div class="result-title">Live Deployed on Vercel</div><div class="result-desc">Production-deployed with SSR via Next.js and Prisma ORM on serverless Vercel infrastructure.</div></div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section style="background:var(--surface);border-top:1px solid var(--border);">
+    <div class="mb-8 fade-up"><span class="section-label">// Demo & Evidence</span><h2 class="heading-font font-bold tracking-tighter c-text" style="font-size:2rem;">Screenshots</h2></div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden;border:1px solid var(--border);"><img src="../assets/images/inventory/dashboard.png" alt="Inventory management dashboard" style="width:100%;display:block;" loading="lazy">
+        <div style="padding:0.75rem 1rem;background:var(--surface-alt);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">Dashboard — Products, Billing, Audit, Staff</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div></div>
+    </div>
+    <div class="mt-6 fade-up d1" style="text-align:center;"><a href="https://inventory-management-2mz5.onrender.com/" target="_blank" class="btn-primary" style="display:inline-flex;">Try Live Demo <i class="fas fa-external-link-alt" style="margin-left:6px;"></i></a></div>
+  </section>
+
+  <div class="project-nav-row">
+    <a href="erp.html" class="project-nav-link"><i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br><span class="project-nav-title">Student ERP</span></a>
+    <a href="attendpro.html" class="project-nav-link" style="text-align:right;">Next <i class="fas fa-arrow-right" style="font-size:8px;"></i><br><span class="project-nav-title">AttendPro</span></a>
+  </div>
+  <script src="../assets/main.js"></script>
+</body>
+</html>

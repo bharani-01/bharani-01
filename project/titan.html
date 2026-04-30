@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    try {
+      const s = localStorage.getItem('bk-portfolio-theme');
+      const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme',
+        s === 'dark' || (!s && d) ? 'dark' : 'light');
+    } catch(e) {}
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TITAN-V2 — Autonomous Rover | Bharani KR</title>
+  <meta name="description" content="TITAN-V2: Autonomous rover with 3D-printed 6-axis robotic arm, ESP32+ESP8266+ESP-CAM multi-MCU architecture, and real-time WebSocket telemetry. 2nd year IoT end-sem project.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="../assets/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="page-loader" id="page-loader"><div class="loader-logo">B<span>K</span></div><div class="loader-bar"></div></div>
+  <div id="scroll-progress"></div>
+  <div class="grid-blueprint"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">BHARANI <span>KR</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a><a href="../about.html">Identity</a>
+      <a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button id="mob-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="../index.html">Home</a><a href="../about.html">Identity</a>
+    <a href="../projects.html">Engineering</a><a href="../contact.html">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="project-detail-hero">
+    <a href="../projects.html" class="project-nav-link fade-up" style="display:inline-flex; align-items:center; gap:0.4rem; margin-bottom:1.5rem;">
+      <i class="fas fa-arrow-left" style="font-size:8px;"></i> Back to All Projects
+    </a>
+    <div class="flex flex-wrap gap-2 mb-3 fade-up d1">
+      <span class="tier-badge">FLAGSHIP</span>
+      <span class="tag">02 / 10</span>
+    </div>
+    <h1 class="heading-font font-bold tracking-tighter c-text fade-up d2" style="font-size: clamp(2.5rem, 7vw, 4.5rem);">TITAN-V2</h1>
+    <p class="c-muted mt-2 max-w-xl fade-up d3" style="font-size: 1.1rem; line-height: 1.7;">
+      Autonomous rover with 3D-printed 6-axis robotic arm, multi-MCU architecture (ESP32 + ESP8266 + ESP-CAM), 6-sensor proximity array, IMU telemetry, and real-time mission control dashboard.
+    </p>
+    <div class="flex flex-wrap gap-2 mt-4 fade-up d4">
+      <span class="tag">ESP32</span><span class="tag">ESP8266</span><span class="tag">ESP-CAM</span>
+      <span class="tag">MPU-6050</span><span class="tag">HC-SR04</span><span class="tag">WebSocket</span>
+      <span class="tag">C++</span><span class="tag">3D Printing</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mt-6 fade-up d5">
+      <a href="https://github.com/bharani-01" target="_blank" class="btn-primary">View Source <i class="fab fa-github"></i></a>
+    </div>
+    <div class="flex flex-wrap gap-4 mt-4 fade-up d5" style="font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--text-subtle);">
+      <span><i class="fas fa-calendar" style="margin-right:4px;"></i> 2nd Year IoT End-Sem Project</span>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <section class="compact" style="background: var(--surface); border-bottom: 1px solid var(--border);">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="detail-metric fade-up"><div class="detail-metric-number">3</div><div class="detail-metric-label">ESP Modules Used</div></div>
+      <div class="detail-metric fade-up d1"><div class="detail-metric-number">6-Axis</div><div class="detail-metric-label">3D-Printed Robotic Arm</div></div>
+      <div class="detail-metric fade-up d2"><div class="detail-metric-number">6</div><div class="detail-metric-label">Ultrasonic Sensors</div></div>
+      <div class="detail-metric fade-up d3"><div class="detail-metric-number">6-DOF</div><div class="detail-metric-label">Robotic Arm + IMU</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4 fade-up">
+        <span class="section-label">// Problem Statement</span>
+        <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">The Challenge</h2>
+      </div>
+      <div class="md:col-span-8 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">
+          Agricultural terrain monitoring relies on manual inspection or expensive commercial drones. Research stations need an affordable, modular ground rover capable of autonomous navigation with a manipulator arm for sample collection.
+        </p>
+        <ul class="c-muted leading-relaxed list-disc ml-5 space-y-2">
+          <li><strong class="c-text">Multi-MCU coordination</strong> — ESP32 alone doesn't have enough GPIO pins for 6 ultrasonic sensors + motor driver + IMU + servos simultaneously</li>
+          <li><strong class="c-text">Real-time orientation tracking</strong> — knowing rover pitch, roll, and yaw on uneven terrain via MPU-6050 IMU</li>
+          <li><strong class="c-text">360° obstacle avoidance</strong> — detecting obstacles in 6 directions simultaneously</li>
+          <li><strong class="c-text">Live video + telemetry</strong> — streaming ESP-CAM feed alongside sensor data to a mission control dashboard</li>
+          <li><strong class="c-text">Robotic manipulation</strong> — controlling a 3D-printed 6-axis arm with precision servo actuation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// My Approach</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">Engineering Thinking</h2>
+    </div>
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-7 fade-up d1">
+        <p class="c-muted leading-relaxed mb-4">
+          Built as my <strong class="c-text">2nd year IoT end-semester project</strong>. The initial design used <strong class="c-text">ESP-NOW protocol</strong> for a custom handheld controller to manually operate the 6-axis arm and rover. When we decided to make it autonomous, we switched from ESP-NOW to <strong class="c-text">WebSocket</strong> for lower-latency bidirectional communication.
+        </p>
+        <p class="c-muted leading-relaxed mb-4">
+          The pin shortage problem was solved with a <strong class="c-text">multi-MCU architecture</strong>: ESP32 handles motor control + IMU + WebSocket server, ESP8266 manages the 6 ultrasonic sensors, and ESP-CAM streams live video for AI analysis. All three communicate over WiFi through a laptop hotspot acting as the local network hub.
+        </p>
+        <p class="c-muted leading-relaxed">
+          The 6-axis robotic arm was <strong class="c-text">3D-printed in PLA</strong>, the rover base was purchased off Amazon, and all electronic components were sourced online — keeping the total BOM cost minimal.
+        </p>
+      </div>
+      <div class="md:col-span-5 space-y-4 fade-up d2">
+        <div class="approach-chosen">
+          <div class="approach-tag chosen">CHOSEN</div>
+          <p class="c-text text-sm font-semibold mb-1">Multi-MCU + WebSocket architecture</p>
+          <p class="c-muted text-sm leading-relaxed">ESP32 + ESP8266 + ESP-CAM working together over WiFi. WebSocket for low-latency bidirectional telemetry.</p>
+        </div>
+        <div class="approach-rejected">
+          <div class="approach-tag rejected">EVOLVED FROM</div>
+          <p class="c-text text-sm font-semibold mb-1">ESP-NOW with custom controller</p>
+          <p class="c-muted text-sm leading-relaxed">Initially used ESP-NOW for manual control. Abandoned when switching to autonomous mode — needed bidirectional data, not just commands.</p>
+        </div>
+        <div class="approach-rejected">
+          <div class="approach-tag rejected">REJECTED</div>
+          <p class="c-text text-sm font-semibold mb-1">Single-MCU design</p>
+          <p class="c-muted text-sm leading-relaxed">ESP32 alone couldn't handle 6 ultrasonic sensors + 6 servos + motor driver + IMU + WiFi simultaneously. GPIO exhaustion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Hardware Architecture</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">Multi-MCU System Design</h2>
+    </div>
+    <div class="arch-block fade-up d1">
+                    ┌────────────────────┐
+                    │   Mission Control  │
+                    │   Dashboard (Web)  │
+                    └─────────┬──────────┘
+                              │ WebSocket (WiFi)
+                              │
+              ┌───────────────┼───────────────┐
+              │               │               │
+    ┌─────────┴──────┐ ┌─────┴──────┐ ┌──────┴──────┐
+    │    ESP32       │ │  ESP8266   │ │  ESP-CAM    │
+    │  Main Control  │ │  Sensor    │ │  Video      │
+    │                │ │  Manager   │ │  Stream     │
+    │ • MPU-6050 IMU │ │ • 6× HC-  │ │ • Live MJPEG│
+    │ • Motor Driver │ │   SR04    │ │ • AI Feed   │
+    │ • Servo (Arm)  │ │ • Prox.   │ └─────────────┘
+    │ • WebSocket    │ │   Data    │
+    └────────────────┘ └───────────┘
+     I2C + GPIO         GPIO × 12
+              │               │
+     ┌────────┴──────┐ ┌─────┴──────┐
+     │  L298N Motor  │ │ Buck/Boost │
+     │  Driver       │ │ Converters │
+     └───────────────┘ └────────────┘
+      Rover Movement   Power Mgmt</div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Tech Stack</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">Why These Technologies</h2>
+    </div>
+    <div class="tech-reason-grid fade-up d1">
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-microchip"></i></div><div><div class="tech-reason-name">ESP32</div><div class="tech-reason-why">Main controller — WiFi + enough processing power for WebSocket server, IMU data fusion, and motor PWM.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-microchip"></i></div><div><div class="tech-reason-name">ESP8266</div><div class="tech-reason-why">Added for GPIO expansion — manages all 6 ultrasonic trigger/echo pins that ESP32 couldn't spare.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-video"></i></div><div><div class="tech-reason-name">ESP-CAM</div><div class="tech-reason-why">Cheap OV2640 camera module with built-in WiFi. Streams MJPEG to dashboard for AI visual analysis.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-compass"></i></div><div><div class="tech-reason-name">MPU-6050 IMU</div><div class="tech-reason-why">6-DOF accelerometer + gyroscope for pitch/roll/yaw tracking on uneven terrain. I2C interface.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-broadcast-tower"></i></div><div><div class="tech-reason-name">WebSocket</div><div class="tech-reason-why">Replaced ESP-NOW for autonomous mode. Bidirectional, low-latency, browser-compatible telemetry.</div></div></div>
+      <div class="tech-reason-item"><div class="tech-reason-icon"><i class="fas fa-print"></i></div><div><div class="tech-reason-name">3D Printing (PLA)</div><div class="tech-reason-why">Custom 6-axis robotic arm — no off-the-shelf arm fit the rover footprint. Designed and printed in-house.</div></div></div>
+    </div>
+  </section>
+
+  <!-- DEEP DIVE -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Technical Deep-Dive</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">Key Systems</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="surface-card p-6 fade-up">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">MPU-6050 IMU Integration</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>I2C bus init with device detection handshake (0x68 address)</li>
+          <li>Raw accelerometer + gyroscope data fusion</li>
+          <li>Complementary filter for stable pitch/roll/yaw</li>
+          <li>50Hz sampling rate with noise rejection</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d1">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">6-Sensor Proximity Array</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>6× HC-SR04 managed by dedicated ESP8266</li>
+          <li>Sequential trigger-echo with microsecond timing</li>
+          <li>Configurable proximity thresholds per direction</li>
+          <li>Hazard alert system with directional severity mapping</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d2">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">WebSocket Mission Control</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>JSON telemetry frames at 10Hz over persistent connection</li>
+          <li>3D orientation visualization in browser</li>
+          <li>6-directional proximity gauge display</li>
+          <li>Manual override controls for motor + arm actuation</li>
+        </ul>
+      </div>
+      <div class="surface-card p-6 fade-up d3">
+        <p class="proj-h5 mb-3" style="letter-spacing:0.15em;">3D-Printed 6-Axis Arm</p>
+        <ul class="c-muted text-sm leading-relaxed list-disc ml-4 space-y-1">
+          <li>Custom-designed PLA arm with 6 servo joints</li>
+          <li>Initially controlled via ESP-NOW custom handheld</li>
+          <li>Migrated to WebSocket for autonomous operation</li>
+          <li>Inverse kinematics for target-position reaching</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHALLENGES -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Challenges & Failures</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">What Broke & What I Learned</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="challenge-card fade-up">
+        <div class="challenge-num">Challenge 01</div>
+        <div class="challenge-title">IMU Address Detection — 0x69 vs 0x68</div>
+        <div class="challenge-body">
+          Spent hours debugging why the MPU-6050 wasn't responding. <strong>I was using I2C address 0x69 but the chip defaulted to 0x68.</strong> After fixing the address, we still got garbage values — turns out the sensor needed a proper initialization sequence and warm-up delay before readings stabilized.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Always run an I2C scanner first. Never assume default addresses from tutorials — check the actual datasheet.</div>
+      </div>
+      <div class="challenge-card fade-up d1">
+        <div class="challenge-num">Challenge 02</div>
+        <div class="challenge-title">WiFi Multi-Device Connectivity</div>
+        <div class="challenge-body">
+          Using my mobile hotspot, <strong>only 2 of 3 ESPs would connect reliably — one kept dropping.</strong> Switched to laptop hotspot and it worked. Root cause: phone hotspot had a device connection limit and aggressive power-saving that killed idle connections.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: In multi-MCU IoT systems, your network infrastructure matters as much as your firmware. Control your AP.</div>
+      </div>
+      <div class="challenge-card fade-up d2">
+        <div class="challenge-num">Challenge 03</div>
+        <div class="challenge-title">Random Disconnections — Power Management</div>
+        <div class="challenge-body">
+          ESPs would randomly disconnect mid-operation. <strong>The issue was power — voltage drops under motor load caused MCU brownouts.</strong> Fixed by adding buck and boost converters to provide clean, stable voltage rails to each MCU independently of the motor power draw.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: In robotics, power design is as critical as software. Separate MCU power from motor power with proper regulation.</div>
+      </div>
+      <div class="challenge-card fade-up d3">
+        <div class="challenge-num">Challenge 04</div>
+        <div class="challenge-title">ESP-NOW to WebSocket Migration</div>
+        <div class="challenge-body">
+          The original ESP-NOW setup worked perfectly for manual control but <strong>couldn't support bidirectional data flow</strong> needed for autonomous telemetry. Rewriting the entire communication layer to WebSocket mid-project meant restructuring both firmware and dashboard code.
+        </div>
+        <div class="challenge-lesson"><i class="fas fa-graduation-cap"></i> Lesson: Choose your communication protocol based on the final use case, not the prototype. Architectural pivots are expensive.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Results & Impact</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">What It Achieved</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="result-card fade-up">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">End-Sem Project Completion</div>
+        <div class="result-desc">Successfully delivered a working multi-MCU autonomous rover with robotic arm as 2nd year IoT end-semester project.</div>
+      </div>
+      <div class="result-card fade-up d1">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">Multi-MCU Coordination</div>
+        <div class="result-desc">3 microcontrollers (ESP32 + ESP8266 + ESP-CAM) working in sync over WiFi with stable real-time telemetry.</div>
+      </div>
+      <div class="result-card fade-up d2">
+        <div class="result-label">Outcome</div>
+        <div class="result-title">Full Autonomous Pipeline</div>
+        <div class="result-desc">From manual ESP-NOW control to fully autonomous WebSocket-driven navigation with 6-sensor obstacle avoidance.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO & EVIDENCE -->
+  <section style="background: var(--surface); border-top: 1px solid var(--border);">
+    <div class="mb-8 fade-up">
+      <span class="section-label">// Demo & Evidence</span>
+      <h2 class="heading-font font-bold tracking-tighter c-text" style="font-size: 2rem;">Screenshots & Demo</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="fade-up" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/titan/dashboard.png" alt="TITAN-V2 Mission Control Dashboard" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">Mission Control — Live Telemetry Dashboard</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d1" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/titan/rover.png" alt="TITAN-V2 Rover with 6-axis robotic arm" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">TITAN-V2 — Rover + 3D-Printed Robotic Arm</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d2" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/titan/hardware.png" alt="Hardware components flat lay" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">Hardware Components — ESP32, ESP8266, IMU, Sensors</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+      <div class="fade-up d3" style="overflow:hidden; border: 1px solid var(--border);">
+        <img src="../assets/images/titan/architecture.png" alt="System architecture diagram" style="width:100%; display:block;" loading="lazy">
+        <div style="padding: 0.75rem 1rem; background: var(--surface-alt); font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);">System Architecture — Multi-MCU Data Flow</div>
+        <div style="padding: 0.5rem 1rem; background: var(--surface); font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-style: italic; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border);">*Note: These images are generated by AI, the images will be replaced new very soon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT NAV -->
+  <div class="project-nav-row">
+    <a href="roadcams.html" class="project-nav-link">
+      <i class="fas fa-arrow-left" style="font-size:8px;"></i> Previous<br>
+      <span class="project-nav-title">RoadCams</span>
+    </a>
+    <a href="payroll.html" class="project-nav-link" style="text-align:right;">
+      Next <i class="fas fa-arrow-right" style="font-size:8px;"></i><br>
+      <span class="project-nav-title">Payroll Suite</span>
+    </a>
+  </div>
+
+  <script src="../assets/main.js"></script>
+</body>
+</html>
