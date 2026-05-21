@@ -430,7 +430,7 @@ contactForm?.addEventListener('submit', function(e) {
       { text: '' },
       { text: '  📧  bharani.cyber@gmail.com' },
       { text: '  📱  +91 93637 25862' },
-      { text: '  🔗  linkedin.com/in/bharani-k-r-45a950354' },
+      { text: '  🔗  www.linkedin.com/in/bharani01' },
       { text: '  💻  github.com/bharani-01', cls: 'success' },
       { text: '' },
       { text: '  📍  Chennai, Tamil Nadu (IST UTC+5:30)' },
@@ -505,112 +505,5 @@ contactForm?.addEventListener('submit', function(e) {
 /* ═══════════════════════════════════
    INTERACTIVE CIRCUIT BACKGROUND
 ═══════════════════════════════════ */
-function initCircuitBackground() {
-  const canvas = document.getElementById('circuit-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  
-  let w, h;
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  let mouse = { x: w/2, y: h/2, moved: false };
-  window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    mouse.moved = true;
-  });
-
-  const particles = [];
-  const maxParticles = 25; // Adjusted for performance
-  const grid = 25;
-
-  class Trace {
-    constructor(x, y) {
-      this.x = Math.round(x / grid) * grid;
-      this.y = Math.round(y / grid) * grid;
-      this.path = [{x: this.x, y: this.y}];
-      this.life = 0;
-      this.maxLife = 60 + Math.random() * 80;
-      this.speed = grid;
-      this.dir = Math.floor(Math.random() * 4);
-    }
-    update() {
-      this.life++;
-      if (this.life > this.maxLife) return false;
-
-      // Move every other frame
-      if (this.life % 2 === 0) {
-        if (this.dir === 0) this.x += this.speed;
-        else if (this.dir === 1) this.y += this.speed;
-        else if (this.dir === 2) this.x -= this.speed;
-        else if (this.dir === 3) this.y -= this.speed;
-        
-        this.path.push({x: this.x, y: this.y});
-        
-        // Randomly turn 90 deg
-        if (Math.random() < 0.15) {
-          this.dir = (this.dir + (Math.random() > 0.5 ? 1 : -1) + 4) % 4;
-        }
-      }
-      
-      // Keep only last N points to form a moving trace
-      if (this.path.length > 20) this.path.shift();
-      return true;
-    }
-    draw() {
-      if (this.path.length < 2) return;
-      ctx.beginPath();
-      ctx.moveTo(this.path[0].x, this.path[0].y);
-      for (let i = 1; i < this.path.length; i++) {
-        ctx.lineTo(this.path[i].x, this.path[i].y);
-      }
-      
-      const theme = document.documentElement.getAttribute('data-theme') || 'light';
-      // Muted techy blue — slightly brighter on true-black bg
-      const color = theme === 'dark' ? 'rgba(77, 141, 255, ' : 'rgba(0, 85, 255, ';
-      const alpha = (theme === 'dark' ? 0.5 : 0.6) * (1 - (this.life / this.maxLife));
-      
-      ctx.strokeStyle = color + alpha + ')';
-      ctx.lineWidth = 1;
-      ctx.lineJoin = 'round';
-      ctx.stroke();
-      
-      // Draw end node (the packet)
-      const last = this.path[this.path.length - 1];
-      ctx.beginPath();
-      ctx.arc(last.x, last.y, 2, 0, Math.PI * 2);
-      ctx.fillStyle = color + alpha + ')';
-      ctx.fill();
-    }
-  }
-
-  function loop() {
-    ctx.clearRect(0, 0, w, h);
-    
-    // Spawn trace if mouse moved
-    if (mouse.moved && Math.random() < 0.15 && particles.length < maxParticles) {
-      const ox = mouse.x + (Math.random() - 0.5) * 60;
-      const oy = mouse.y + (Math.random() - 0.5) * 60;
-      particles.push(new Trace(ox, oy));
-    }
-    
-    for (let i = particles.length - 1; i >= 0; i--) {
-      if (!particles[i].update()) {
-        particles.splice(i, 1);
-      } else {
-        particles[i].draw();
-      }
-    }
-    requestAnimationFrame(loop);
-  }
-  loop();
-}
-
-// Init when DOM is loaded
-initCircuitBackground();
+// Functionality removed as per request.
 
